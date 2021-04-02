@@ -7,6 +7,11 @@
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.1
 
+
+DROP DATABASE IF EXISTS Prestachopebdd4;
+CREATE DATABASE Prestachopebdd4;
+USE Prestachopebdd4;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
