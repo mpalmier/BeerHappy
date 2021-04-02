@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS BeerHappy;
+CREATE DATABASE BeerHappy;
+USE BeerHappy;
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
