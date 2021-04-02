@@ -25,6 +25,7 @@ class SuperController
             case "accueil":
                 $instanceController=new ControllerAccueil();
                 $instanceController->includeView();
+                break;
 
             case "connexion" :
                 $instanceController = new ControllerConnexion();
