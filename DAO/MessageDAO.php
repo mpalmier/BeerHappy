@@ -33,7 +33,7 @@ class MessageDAO{
             return null;
         }
         else{
-            $mess=user[0];
+            $mess=$message[0];
             $messageDTO = new MessageDTO();
             $messageDTO->setIdUser($mess[0]);
             $messageDTO->setPseudo($mess[1]);
