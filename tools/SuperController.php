@@ -7,12 +7,13 @@ class SuperController
         switch($page)
         {
             case "interdit" :
+                include_once("page/interdiction/ControllerInterdiction.php");
                 $instanceController = new ControllerInterdiction();
                 if ($instanceController->isConnected()==false) {
                     $instanceController->includeView();
                 }
                 else {
-                    include("index.php?page=accueil");
+                    header("location:index.php?page=accueil");
                 }
                 break;
 
@@ -23,6 +24,7 @@ class SuperController
 
 
             case "accueil":
+                include_once ("page/Accueil/ControllerAccueil.php");
                 $instanceController=new ControllerAccueil();
                 $instanceController->insertView();
                 break;
