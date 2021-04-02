@@ -4,7 +4,7 @@ class DatabaseLinker {
 
 
 
-	private static $url = ("mysql:host=localhost;dbname=prestachope_bdd3;");
+	private static $url = ("mysql:host=localhost;dbname=prestachopebdd4;");
 	private static $username = 'root';
 	private static $password = 'root';
 	private static $connect ;

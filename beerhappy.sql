@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Prestachopebdd3;
-CREATE DATABASE Prestachopebdd3;
-USE Prestachopebdd3;
+DROP DATABASE IF EXISTS Prestachopebdd4;
+CREATE DATABASE Prestachopebdd4;
+USE Prestachopebdd4;
 
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
