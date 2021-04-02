@@ -1,9 +1,8 @@
 <?php
 
 class UserDAO{
-
     public static function getUser() {
-        $bdd = DatabaseLinker::getConnexion();
+    $bdd = DatabaseLinker::getConnexion();
 	$reponse = $bdd->prepare("SELECT * from user");
 	$reponse->execute();
 	$user = $reponse->fetchAll();
@@ -36,7 +35,7 @@ class UserDAO{
 		return null;
 	}
 	else{    
-            $luser=user[0];
+            $luser=$user[0];
             $userDTO = new UserDTO();
             $userDTO->setIdUser($luser[0]);
             $userDTO->setPseudo($luser[1]);
