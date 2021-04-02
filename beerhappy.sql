@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS BeerHappy;
-CREATE DATABASE BeerHappy;
-USE BeerHappy;
+DROP DATABASE IF EXISTS Prestachopebdd3;
+CREATE DATABASE Prestachopebdd3;
+USE Prestachopebdd3;
 
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
