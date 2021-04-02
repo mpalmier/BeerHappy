@@ -9,7 +9,8 @@
 <?php
 include_once("tools/SuperController.php");
 include_once("page/interdiction/ControllerInterdiction.php");
-include_once("page/accueil/accueil.php");
+include_once ("page/Accueil/ControllerAccueil.php");
+
 $page = "interdit";
 
 if(!empty($_GET['page'])) {

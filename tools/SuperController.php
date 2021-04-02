@@ -12,7 +12,7 @@ class SuperController
                     $instanceController->includeView();
                 }
                 else {
-                    header("location:index.php?page=acceuil");
+                    include("index.php?page=accueil");
                 }
                 break;
 
@@ -24,7 +24,7 @@ class SuperController
 
             case "accueil":
                 $instanceController=new ControllerAccueil();
-                $instanceController->includeView();
+                $instanceController->insertView();
                 break;
 
             case "connexion" :
