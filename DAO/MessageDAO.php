@@ -42,6 +42,24 @@ class MessageDAO{
             return $messageDTO;
         }
     }
+    public static function getMessageByPseudo($pseudo){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("SELECT * from user where pseudo=?");
+        $reponse->execute(array($pseudo));
+        $message = $reponse->fetchAll();
+        if (empty($user[0])){
+            return null;
+        }
+        else{
+            $mess=$message[0];
+            $messageDTO = new MessageDTO();
+            $messageDTO->setIdUser($mess[0]);
+            $messageDTO->setPseudo($mess[1]);
+            $messageDTO->setContent($mess[2]);
+            $messageDTO->setDate($mess[3]);
+            return $messageDTO;
+        }
+    }
 
 
 }

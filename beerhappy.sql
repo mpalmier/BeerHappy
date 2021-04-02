@@ -1,17 +1,14 @@
-DROP DATABASE IF EXISTS Prestachopebdd4;
-CREATE DATABASE Prestachopebdd4;
-USE Prestachopebdd4;
-
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 02 avr. 2021 à 11:25
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Hôte : localhost:3306
+-- Généré le : ven. 02 avr. 2021 à 14:06
+-- Version du serveur :  5.7.24
+-- Version de PHP : 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -22,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `beerhappy`
+-- Base de données : `prestachopebdd4`
 --
 
 -- --------------------------------------------------------
@@ -31,14 +28,11 @@ SET time_zone = "+00:00";
 -- Structure de la table `achat`
 --
 
-DROP TABLE IF EXISTS `achat`;
-CREATE TABLE IF NOT EXISTS `achat` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `achat` (
+  `id` int(11) NOT NULL,
   `id_user_achat` int(11) DEFAULT NULL,
   `id_achat` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `achat_user0_FK` (`id_user`)
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,12 +41,9 @@ CREATE TABLE IF NOT EXISTS `achat` (
 -- Structure de la table `appartient`
 --
 
-DROP TABLE IF EXISTS `appartient`;
-CREATE TABLE IF NOT EXISTS `appartient` (
+CREATE TABLE `appartient` (
   `id_panier` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  PRIMARY KEY (`id_panier`,`id_produit`),
-  KEY `appartient_produit1_FK` (`id_produit`)
+  `id_produit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,15 +52,13 @@ CREATE TABLE IF NOT EXISTS `appartient` (
 -- Structure de la table `message`
 --
 
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `message` (
+  `id_message` int(11) NOT NULL,
   `pseudo_user` varchar(30) DEFAULT NULL,
   `content` varchar(250) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_message`),
-  KEY `message_user0_FK` (`id_user`)
+  `id_message_reponse` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -78,16 +67,12 @@ CREATE TABLE IF NOT EXISTS `message` (
 -- Structure de la table `panier`
 --
 
-DROP TABLE IF EXISTS `panier`;
-CREATE TABLE IF NOT EXISTS `panier` (
-  `id_panier` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `panier` (
+  `id_panier` int(11) NOT NULL,
   `id_user_panier` int(11) DEFAULT NULL,
   `id_produit` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_panier`),
-  UNIQUE KEY `panier_user0_AK` (`id_user`),
-  KEY `panier_achat1_FK` (`id`)
+  `id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,14 +81,12 @@ CREATE TABLE IF NOT EXISTS `panier` (
 -- Structure de la table `produit`
 --
 
-DROP TABLE IF EXISTS `produit`;
-CREATE TABLE IF NOT EXISTS `produit` (
-  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produit` (
+  `id_produit` int(11) NOT NULL,
   `nom` varchar(30) DEFAULT NULL,
   `prix` float DEFAULT NULL,
   `categorie` varchar(30) DEFAULT NULL,
-  `photo` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_produit`)
+  `photo` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -112,18 +95,95 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
   `pseudo` varchar(30) DEFAULT NULL,
   `mdp` varchar(30) DEFAULT NULL,
   `argent` varchar(30) DEFAULT NULL,
   `adresse` varchar(30) DEFAULT NULL,
   `admin` int(11) DEFAULT NULL,
-  `id_panier` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `user_panier0_AK` (`id_panier`)
+  `id_panier` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `achat`
+--
+ALTER TABLE `achat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `achat_user0_FK` (`id_user`);
+
+--
+-- Index pour la table `appartient`
+--
+ALTER TABLE `appartient`
+  ADD PRIMARY KEY (`id_panier`,`id_produit`),
+  ADD KEY `appartient_produit1_FK` (`id_produit`);
+
+--
+-- Index pour la table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id_message`),
+  ADD KEY `message_user0_FK` (`id_user`);
+
+--
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id_panier`),
+  ADD UNIQUE KEY `panier_user0_AK` (`id_user`),
+  ADD KEY `panier_achat1_FK` (`id`);
+
+--
+-- Index pour la table `produit`
+--
+ALTER TABLE `produit`
+  ADD PRIMARY KEY (`id_produit`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `user_panier0_AK` (`id_panier`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `achat`
+--
+ALTER TABLE `achat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `panier`
+--
+ALTER TABLE `panier`
+  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `produit`
+--
+ALTER TABLE `produit`
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
