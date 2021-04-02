@@ -30,8 +30,20 @@ class SuperController
                 break;
 
             case "connexion" :
+                include_once("page/connexion/ControllerConnexion.php");
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+
                 $instanceController = new ControllerConnexion();
                 $instanceController->includeView();
+
+                if(!empty($_POST['username']) && !empty($_POST['password']))
+                {
+                    if ($instanceController->authenticate($_POST['username'], $_POST['password']))
+                    {
+                        $instanceController->redirectUser();
+                    }
+                }
                 break;
 
             case "inscription" :
