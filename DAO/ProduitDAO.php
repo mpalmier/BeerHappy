@@ -1,28 +1,30 @@
 <?php
 
+
+
 class ProduitDAO {
 
     public static function getProduit() {
-    $bdd = DatabaseLinker::getConnexion();
-	$reponse = $bdd->prepare("SELECT * from user");
-	$reponse->execute();
-	$user = $reponse->fetchAll();
-	$tab=Array();
-	if (empty($user[0])){
-		return null;
-	}
-else{
-    foreach ($user as $users) {
-        $userDTO = new UserDTO();
-        $userDTO->setIdUser($users[0]);
-        $userDTO->setPseudo($users[1]);
-        $userDTO->setMdp($users[2]);
-        $userDTO->setArgent($users[3]);
-        $userDTO->setAdresse($users[4]);
-        $tab[]=$userDTO;
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("SELECT * from produit");
+        $reponse->execute();
+        $produit = $reponse->fetchAll();
+        $tab=Array();
+        if (empty($produit[0])){
+            return null;
+        }
+        else{
+            foreach ($produit as $produits) {
+                $produitDTO = new UserDTO();
+                $produitDTO->setIdProduit($produits[0]);
+                $produitDTO->setNom($produits[1]);
+                $produitDTO->setPrix($produits[2]);
+                $produitDTO->setCategorie($produits[3]);
+                $produitDTO->setPhoto($produits[4]);
+                $tab[]=$produitDTO;
+            }
+        
+            return $tab;
+        }
     }
-
-    return $tab;
-}
-}
 }

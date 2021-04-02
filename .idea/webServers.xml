@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d6b05984-3c8a-439f-8136-43a11019db9b" name="BeerHappy" url="http://localhost/BeerHappy/BeerHappy">
+        <fileTransfer mountedRoot="C:\Users\besse\AppData\Local\JetBrains\PhpStorm 2020.3.3\jbr\bin\http:\localhost\BeerHappy\BeerHappy" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
