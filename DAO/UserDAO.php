@@ -1,6 +1,7 @@
 <?php
 
 class UserDAO{
+
     public static function getUser() {
         $bdd = DatabaseLinker::getConnexion();
 	$reponse = $bdd->prepare("SELECT * from user");
