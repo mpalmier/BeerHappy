@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-        <form action="index.php?page=carte" method="POST">
+        <form action="" method="POST">
             <h1>Connexion</h1>
             <label><b>Nom d'utilisateur</b></label>
             <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>

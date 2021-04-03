@@ -5,13 +5,13 @@ class ControllerConnexion {
         include_once("connexion.php");
     }
 
-    public static function authenticate($iden, $mdp)
+    public static function authenticate($identifiant, $mdp)
     {
 
         $auth = true;
         $mdp = sha1($mdp);
 
-        $Users = UserDAO::getUserById($iden, $mdp);
+        $Users = UserDAO::getUserById($identifiant, $mdp);
 
         if ($Users != null)
         {
@@ -28,4 +28,10 @@ class ControllerConnexion {
     {
         header('Location: index.php?page=carte');
     }
+
+    public static function redirectUserFalse()
+    {
+        include_once('connexionFalse.php');
+    }
+
 }

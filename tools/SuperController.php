@@ -4,6 +4,8 @@ class SuperController
 {
     public static function callPage($page)
     {
+        include_once('tools/DatabaseLinker.php');
+
         switch($page)
         {
             case "interdit" :
@@ -30,9 +32,10 @@ class SuperController
                 break;
 
             case "connexion" :
-                include_once("page/connexion/ControllerConnexion.php");
                 include_once('DAO/UserDAO.php');
                 include_once('DTO/UserDTO.php');
+                include_once("page/connexion/ControllerConnexion.php");
+
 
                 $instanceController = new ControllerConnexion();
                 $instanceController->includeView();
@@ -43,10 +46,18 @@ class SuperController
                     {
                         $instanceController->redirectUser();
                     }
+                    else
+                    {
+                        $instanceController->redirectUserFalse();
+                    }
                 }
                 break;
 
             case "inscription" :
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once("page/inscription/ControllerInscription.php");
+
                 $instanceController = new ControllerInscription();
                 $instanceController->includeView();
                 break;
