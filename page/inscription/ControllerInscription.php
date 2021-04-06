@@ -10,18 +10,8 @@ class ControllerInscription
 
     public static function createAccount($identifiant, $mdp)
     {
-
-        $auth = true;
-        $mdp = sha1($mdp);
-
-        $Users = UserDAO::getUserById($identifiant, $mdp);
-
-        if ($Users != null) {
-            return $auth;
-        } else {
-            $auth = false;
-            return $auth;
-        }
+        $inscription = $dbb->prepare('INSERT INTO log( mail, user, password, photo_profil) VALUES (?,?,sha1(?),?)');
+        $inscription->execute(array($_POST['Email'],$_POST['Username'],$_POST['Password'],$pp));
     }
 
     public static function redirectUser()
