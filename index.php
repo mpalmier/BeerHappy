@@ -9,7 +9,6 @@
 <?php
 session_start('prestachopebdd4');
 include_once("tools/SuperController.php");
-session_start();
 $page = "interdit";
 
 if(!empty($_GET['page'])) {
