@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class SuperController
 {
     public static function callPage($page)
