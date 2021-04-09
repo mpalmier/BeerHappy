@@ -15,7 +15,7 @@ class ControllerConnexion {
 
         if ($Users != null)
         {
-            session_start();
+            session_name("prestachope" + 4);
             $_SESSION['id']=$Users->getIdUser();
             return $auth;
         }
