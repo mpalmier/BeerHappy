@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 09 avr. 2021 à 16:15
+-- Généré le : ven. 09 avr. 2021 à 16:44
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -38,8 +38,7 @@ CREATE TABLE `adresse` (
   `adresse_ligne` varchar(50) DEFAULT NULL,
   `ville` varchar(50) DEFAULT NULL,
   `code_postal` int(11) DEFAULT NULL,
-  `telephone` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
+  `telephone` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -99,7 +98,8 @@ CREATE TABLE `produit` (
   `id` int(11) NOT NULL,
   `nom` varchar(30) DEFAULT NULL,
   `prix` int(11) DEFAULT NULL,
-  `stocke` int(11) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   `id_categorie` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -115,7 +115,8 @@ CREATE TABLE `user` (
   `pseudo` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `argent` int(11) DEFAULT NULL,
-  `admin` int(11) DEFAULT NULL
+  `admin` int(11) DEFAULT NULL,
+  `id_adresse` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -126,8 +127,7 @@ CREATE TABLE `user` (
 -- Index pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `adresse_user_FK` (`id_user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `categorie`
@@ -167,7 +167,8 @@ ALTER TABLE `produit`
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_adresse_FK` (`id_adresse`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -214,12 +215,6 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `adresse`
---
-ALTER TABLE `adresse`
-  ADD CONSTRAINT `adresse_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
-
---
 -- Contraintes pour la table `contenir`
 --
 ALTER TABLE `contenir`
@@ -243,6 +238,12 @@ ALTER TABLE `message`
 --
 ALTER TABLE `produit`
   ADD CONSTRAINT `produit_categorie_FK` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`);
+
+--
+-- Contraintes pour la table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_adresse_FK` FOREIGN KEY (`id_adresse`) REFERENCES `adresse` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
