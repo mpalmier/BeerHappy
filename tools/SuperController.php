@@ -61,6 +61,8 @@ class SuperController
                 $instanceController = new ControllerInscription();
                 $instanceController->includeView();
                 break;
+
+            case "admin":
         }
     }
 }
