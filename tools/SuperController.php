@@ -9,6 +9,9 @@ class SuperController
         switch($page)
         {
             case "interdit" :
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once('page/Admin/ControllerAdmin.php');
                 include_once("page/interdiction/ControllerInterdiction.php");
                 $instanceController = new ControllerInterdiction();
                 if ($instanceController->isConnected()==false) {
@@ -25,6 +28,10 @@ class SuperController
                 break;
 
             case "carte" :
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once('page/Admin/ControllerAdmin.php');
+
                 include_once ("page/carte/ControllerCarte.php");
                 $instanceController = new ControllerCarte();
                 $instanceController->includeView();
@@ -69,6 +76,18 @@ class SuperController
                 break;
 
             case "admin":
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once('page/Admin/ControllerAdmin.php');
+                $instanceController=new ControllerAdmin();
+                if (isset($_SESSION['id'])) {
+                    if (ControllerAdmin::isAdmin($_SESSION['id']) == true) {
+                        $instanceController->includeView();
+                    }
+                }
+
+
+
         }
     }
 }

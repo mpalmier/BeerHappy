@@ -6,6 +6,19 @@ Class UserDTO{
     private $mdp;
     private $argent;
     private $adresse;
+    private $admin;
+
+
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin($admin): void
+    {
+        $this->admin = $admin;
+    }
+
     function getIdUser() {
         return $this->idUser;
     }
