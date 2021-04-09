@@ -7,9 +7,9 @@
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
-DROP DATABASE IF EXISTS prestachopebdd4;
-CREATE DATABASE prestachopebdd4;
-USE prestachopebdd4;
+DROP DATABASE IF EXISTS Prestachopebdd4;
+CREATE DATABASE Prestachopebdd4;
+USE Prestachopebdd4;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
