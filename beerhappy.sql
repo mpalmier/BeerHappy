@@ -1,19 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : ven. 02 avr. 2021 à 14:06
--- Version du serveur :  5.7.24
--- Version de PHP : 7.4.1
-
+-- Hôte : 127.0.0.1
+-- Généré le : ven. 09 avr. 2021 à 15:57
+-- Version du serveur :  10.4.14-MariaDB
+-- Version de PHP : 7.4.10
 
 DROP DATABASE IF EXISTS Prestachopebdd4;
 CREATE DATABASE Prestachopebdd4;
 USE Prestachopebdd4;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,26 +28,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `achat`
+-- Structure de la table `adresse`
 --
 
-CREATE TABLE `achat` (
-  `id` int(11) NOT NULL,
-  `id_user_achat` int(11) DEFAULT NULL,
-  `id_achat` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `adresse` (
+   `id` int(11) NOT NULL,
+   `nom` varchar(35) DEFAULT NULL,
+   `prenom` varchar(35) DEFAULT NULL,
+   `adresse_ligne` varchar(50) DEFAULT NULL,
+   `ville` varchar(50) DEFAULT NULL,
+   `code_postal` int(11) DEFAULT NULL,
+   `telephone` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `appartient`
+-- Structure de la table `categorie`
 --
 
-CREATE TABLE `appartient` (
-  `id_panier` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `categorie` (
+     `id` int(11) NOT NULL,
+     `nom` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contenir`
+--
+
+CREATE TABLE `contenir` (
+    `id` int(11) NOT NULL,
+    `id_facture` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `facture`
+--
+
+CREATE TABLE `facture` (
+   `id` int(11) NOT NULL,
+   `id_user` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -58,27 +81,12 @@ CREATE TABLE `appartient` (
 --
 
 CREATE TABLE `message` (
-  `id_message` int(11) NOT NULL,
-  `pseudo_user` varchar(30) DEFAULT NULL,
-  `content` varchar(250) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id_message_reponse` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `panier`
---
-
-CREATE TABLE `panier` (
-  `id_panier` int(11) NOT NULL,
-  `id_user_panier` int(11) DEFAULT NULL,
-  `id_produit` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+   `id` int(11) NOT NULL,
+   `titre` varchar(30) DEFAULT NULL,
+   `contenu` text DEFAULT NULL,
+   `date` date DEFAULT NULL,
+   `id_user` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87,12 +95,12 @@ CREATE TABLE `panier` (
 --
 
 CREATE TABLE `produit` (
-  `id_produit` int(11) NOT NULL,
-  `nom` varchar(30) DEFAULT NULL,
-  `prix` float DEFAULT NULL,
-  `categorie` varchar(30) DEFAULT NULL,
-  `photo` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+   `id` int(11) NOT NULL,
+   `nom` varchar(30) DEFAULT NULL,
+   `prix` int(11) DEFAULT NULL,
+   `stocke` int(11) DEFAULT NULL,
+   `id_categorie` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,130 +109,140 @@ CREATE TABLE `produit` (
 --
 
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `pseudo` varchar(30) DEFAULT NULL,
-  `mdp` varchar(30) DEFAULT NULL,
-  `argent` varchar(30) DEFAULT NULL,
-  `adresse` varchar(30) DEFAULT NULL,
-  `admin` int(11) DEFAULT NULL,
-  `id_panier` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    `id` int(11) NOT NULL,
+    `email` varchar(50) DEFAULT NULL,
+    `pseudo` varchar(50) DEFAULT NULL,
+    `password` varchar(50) DEFAULT NULL,
+    `argent` int(11) DEFAULT NULL,
+    `admin` int(11) DEFAULT NULL,
+    `id_adresse` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `achat`
+-- Index pour la table `adresse`
 --
-ALTER TABLE `achat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `achat_user0_FK` (`id_user`);
+ALTER TABLE `adresse`
+    ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `appartient`
+-- Index pour la table `categorie`
 --
-ALTER TABLE `appartient`
-  ADD PRIMARY KEY (`id_panier`,`id_produit`),
-  ADD KEY `appartient_produit1_FK` (`id_produit`);
+ALTER TABLE `categorie`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `contenir`
+--
+ALTER TABLE `contenir`
+    ADD PRIMARY KEY (`id`,`id_facture`),
+  ADD KEY `contenir_facture0_FK` (`id_facture`);
+
+--
+-- Index pour la table `facture`
+--
+ALTER TABLE `facture`
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `facture_user_FK` (`id_user`);
 
 --
 -- Index pour la table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`id_message`),
-  ADD KEY `message_user0_FK` (`id_user`);
-
---
--- Index pour la table `panier`
---
-ALTER TABLE `panier`
-  ADD PRIMARY KEY (`id_panier`),
-  ADD UNIQUE KEY `panier_user0_AK` (`id_user`),
-  ADD KEY `panier_achat1_FK` (`id`);
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `message_user_FK` (`id_user`);
 
 --
 -- Index pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id_produit`);
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `produit_categorie_FK` (`id_categorie`);
 
 --
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `user_panier0_AK` (`id_panier`);
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `user_adresse_FK` (`id_adresse`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `achat`
+-- AUTO_INCREMENT pour la table `adresse`
 --
-ALTER TABLE `achat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `adresse`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `facture`
+--
+ALTER TABLE `facture`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `panier`
---
-ALTER TABLE `panier`
-  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `achat`
+-- Contraintes pour la table `contenir`
 --
-ALTER TABLE `achat`
-  ADD CONSTRAINT `achat_user0_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+ALTER TABLE `contenir`
+    ADD CONSTRAINT `contenir_facture0_FK` FOREIGN KEY (`id_facture`) REFERENCES `facture` (`id`),
+  ADD CONSTRAINT `contenir_produit_FK` FOREIGN KEY (`id`) REFERENCES `produit` (`id`);
 
 --
--- Contraintes pour la table `appartient`
+-- Contraintes pour la table `facture`
 --
-ALTER TABLE `appartient`
-  ADD CONSTRAINT `appartient_panier0_FK` FOREIGN KEY (`id_panier`) REFERENCES `panier` (`id_panier`),
-  ADD CONSTRAINT `appartient_produit1_FK` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`);
+ALTER TABLE `facture`
+    ADD CONSTRAINT `facture_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `message_user0_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+    ADD CONSTRAINT `message_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
--- Contraintes pour la table `panier`
+-- Contraintes pour la table `produit`
 --
-ALTER TABLE `panier`
-  ADD CONSTRAINT `panier_achat1_FK` FOREIGN KEY (`id`) REFERENCES `achat` (`id`),
-  ADD CONSTRAINT `panier_user0_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+ALTER TABLE `produit`
+    ADD CONSTRAINT `produit_categorie_FK` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`);
 
 --
 -- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_panier0_FK` FOREIGN KEY (`id_panier`) REFERENCES `panier` (`id_panier`);
+    ADD CONSTRAINT `user_adresse_FK` FOREIGN KEY (`id_adresse`) REFERENCES `adresse` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
