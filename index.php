@@ -8,8 +8,7 @@
 
 <?php
 include_once("tools/SuperController.php");
-
-
+session_start();
 $page = "interdit";
 
 if(!empty($_GET['page'])) {

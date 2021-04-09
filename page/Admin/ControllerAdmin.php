@@ -26,7 +26,14 @@ class ControllerAdmin{
         }
     }
 
-    public static function redirectUser(){
+    public static function afficherUser(){
+        $users=new UserDTO();
+        $users=UserDAO::getUser();
+        foreach ($users as $user){
+            echo $user->getPseudo();
+            echo $user->getAdresse();
+            echo '<BR>';
 
-}
+        }
+    }
 }

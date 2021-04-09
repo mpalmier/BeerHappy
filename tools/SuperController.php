@@ -81,8 +81,8 @@ class SuperController
                 include_once('page/Admin/ControllerAdmin.php');
                 $instanceController=new ControllerAdmin();
                 if (isset($_SESSION['id'])) {
-                    if (ControllerAdmin::isAdmin($_SESSION['id']) == true) {
-                        $instanceController->includeView();
+                    if ($instanceController->isAdmin($_SESSION['id']) == true) {
+                        $instanceController->insertView();
                     }
                 }
 
