@@ -28,6 +28,7 @@ class ControllerConnexion {
     {
         header('Location: index.php?page=carte');
         session_name("prestachope" + 4);
+        $_SESSION['id']->getIdUser();
     }
 
     public static function redirectUserFalse()

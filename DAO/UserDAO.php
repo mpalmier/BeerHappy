@@ -43,7 +43,6 @@ class UserDAO{
                 $userDTO->setArgent($luser[3]);
                 $userDTO->setAdresse($luser[4]);
                 return $userDTO;
-                $_SESSION['name']->getIdUser($luser[0]);
         }
     }
 

@@ -24,6 +24,12 @@ class SuperController
                 $instanceController->includeView();
                 break;
 
+            case "carte" :
+                include_once ("page/carte/ControllerCarte.php");
+                $instanceController = new ControllerCarte();
+                $instanceController->includeView();
+                break;
+
 
             case "accueil":
                 include_once ("page/Accueil/ControllerAccueil.php");
