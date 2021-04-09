@@ -29,10 +29,15 @@ class ControllerAdmin{
     public static function afficherUser(){
         $users=new UserDTO();
         $users=UserDAO::getUser();
+        $adresse=new AdresseDTO();
         foreach ($users as $user){
             echo $user->getPseudo();
-            echo $user->getAdresse();
             echo '<BR>';
+            $adresse=AdresseDAO::getAdresseByIdUser($user->getId());
+            var_dump($adresse);
+            foreach ($adresse as $adresses){
+                echo $adresses->getVille();
+            }
 
         }
     }

@@ -1,63 +1,108 @@
 <?php
 
 Class UserDTO{
-    private $idUser;
+    private $id;
+    private $email;
     private $pseudo;
-    private $mdp;
+    private $password;
     private $argent;
-    private $adresse;
     private $admin;
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArgent()
+    {
+        return $this->argent;
+    }
+
+    /**
+     * @param mixed $argent
+     */
+    public function setArgent($argent): void
+    {
+        $this->argent = $argent;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getAdmin()
     {
         return $this->admin;
     }
 
+    /**
+     * @param mixed $admin
+     */
     public function setAdmin($admin): void
     {
         $this->admin = $admin;
     }
 
-    function getIdUser() {
-        return $this->idUser;
+
     }
-
-    function getPseudo() {
-        return $this->pseudo;
-    }
-
-    function getMdp() {
-        return $this->mdp;
-    }
-
-    function getArgent() {
-        return $this->argent;
-    }
-
-    function getAdresse() {
-        return $this->adresse;
-    }
-
-    function setIdUser($idUser): void {
-        $this->idUser = $idUser;
-    }
-
-    function setPseudo($pseudo): void {
-        $this->pseudo = $pseudo;
-    }
-
-    function setMdp($mdp): void {
-        $this->mdp = $mdp;
-    }
-
-    function setArgent($argent): void {
-        $this->argent = $argent;
-    }
-
-    function setAdresse($adresse): void {
-        $this->adresse = $adresse;
-    }
-
-
-}

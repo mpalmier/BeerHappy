@@ -1,42 +1,75 @@
 <?php
 
-class MessageDTO{
-    
-    private $idUser;
-    private $pseudo;
-    private $content;
+class MessageDTO
+{
+
+    private $id;
+    private $titre;
+    private $contenu;
     private $date;
-    function getIdUser() {
-        return $this->idUser;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
-    function getPseudo() {
-        return $this->pseudo;
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
-    function getContent() {
-        return $this->content;
+    /**
+     * @return mixed
+     */
+    public function getTitre()
+    {
+        return $this->titre;
     }
 
-    function getDate() {
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre): void
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * @param mixed $contenu
+     */
+    public function setContenu($contenu): void
+    {
+        $this->contenu = $contenu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
         return $this->date;
     }
 
-    function setIdUser($idUser): void {
-        $this->idUser = $idUser;
-    }
-
-    function setPseudo($pseudo): void {
-        $this->pseudo = $pseudo;
-    }
-
-    function setContent($content): void {
-        $this->content = $content;
-    }
-
-    function setDate($date): void {
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
+    {
         $this->date = $date;
     }
-
-
+    
 }

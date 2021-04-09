@@ -1,52 +1,94 @@
 <?php
 class ProduitDTO{
     
-    private $idProduit;
+    private $id;
     private $nom;
     private $prix;
-    private $categorie;
+    private $stock;
     private $photo;
-    
-    
-    function getIdProduit() {
-        return $this->idProduit;
-    }
 
-    function getNom() {
-        return $this->nom;
-    }
-
-    function getPrix() {
-        return $this->prix;
-    }
-
-    function getCategorie() {
-        return $this->categorie;
-    }
-
-    function getPhoto() {
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
         return $this->photo;
     }
 
-    function setIdProduit($idProduit): void {
-        $this->idProduit = $idProduit;
-    }
-
-    function setNom($nom): void {
-        $this->nom = $nom;
-    }
-
-    function setPrix($prix): void {
-        $this->prix = $prix;
-    }
-
-    function setCategorie($categorie): void {
-        $this->categorie = $categorie;
-    }
-
-    function setPhoto($photo): void {
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
         $this->photo = $photo;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
 
-}
+    /**
+     * @param mixed $stock
+     */
+    public function setStock($stock): void
+    {
+        $this->stock = $stock;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix): void
+    {
+        $this->prix = $prix;
+    }
+
+    
+    
+    }

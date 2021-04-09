@@ -13,11 +13,11 @@ class UserDAO{
 	else{
 		foreach ($user as $users) {
                     $userDTO = new UserDTO();
-                    $userDTO->setIdUser($users[0]);
-                    $userDTO->setPseudo($users[1]);
-                    $userDTO->setMdp($users[2]);
-                    $userDTO->setArgent($users[3]);
-                    $userDTO->setAdresse($users[4]);
+                    $userDTO->setId($users[0]);
+                    $userDTO->setEmail($users[1]);
+                    $userDTO->setPseudo($users[2]);
+                    $userDTO->setPassword($users[3]);
+                    $userDTO->setArgent($users[4]);
                     $userDTO->setAdmin($users[5]);
                     $tab[]=$userDTO; 
 		}
@@ -29,7 +29,7 @@ class UserDAO{
     
     public static function getUserById($id,$mdp){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from user where pseudo=? AND mdp=?");
+        $reponse = $bdd->prepare("SELECT * from user where pseudo=? AND password=?");
         $reponse->execute(array($id,$mdp));
         $user = $reponse->fetchAll();
             if (empty($user[0])){
@@ -38,11 +38,11 @@ class UserDAO{
         else{
                 $luser=$user[0];
                 $userDTO = new UserDTO();
-                $userDTO->setIdUser($luser[0]);
-                $userDTO->setPseudo($luser[1]);
-                $userDTO->setMdp($luser[2]);
-                $userDTO->setArgent($luser[3]);
-                $userDTO->setAdresse($luser[4]);
+                $userDTO->setId($luser[0]);
+                $userDTO->setEmail($luser[1]);
+                $userDTO->setPseudo($luser[2]);
+                $userDTO->setPassword($luser[3]);
+                $userDTO->setArgent($luser[4]);
                 $userDTO->setAdmin($luser[5]);
                 return $userDTO;
         }
@@ -50,7 +50,7 @@ class UserDAO{
 
     public static function getAdminByIdUser($idUser){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT admin from user where id_user=?");
+        $reponse = $bdd->prepare("SELECT admin from user where id=?");
         $reponse->execute(array($idUser));
         $user = $reponse->fetchAll();
         if (empty($user[0]) || $user[0][0]==0){

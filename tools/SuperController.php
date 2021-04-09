@@ -80,6 +80,8 @@ class SuperController
             case "admin":
                 include_once('DAO/UserDAO.php');
                 include_once('DTO/UserDTO.php');
+                include_once('DAO/AdresseDAO.php');
+                include_once('DTO/AdresseDTO.php');
                 include_once('page/Admin/ControllerAdmin.php');
                 $instanceController=new ControllerAdmin();
                 if (isset($_SESSION['id'])) {
