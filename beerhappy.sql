@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 09 avr. 2021 à 15:34
+-- Généré le : ven. 09 avr. 2021 à 15:57
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -84,6 +84,7 @@ CREATE TABLE `message` (
    `id` int(11) NOT NULL,
    `titre` varchar(30) DEFAULT NULL,
    `contenu` text DEFAULT NULL,
+   `date` date DEFAULT NULL,
    `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -113,6 +114,7 @@ CREATE TABLE `user` (
     `pseudo` varchar(50) DEFAULT NULL,
     `password` varchar(50) DEFAULT NULL,
     `argent` int(11) DEFAULT NULL,
+    `admin` int(11) DEFAULT NULL,
     `id_adresse` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
