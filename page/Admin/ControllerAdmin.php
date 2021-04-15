@@ -30,15 +30,21 @@ class ControllerAdmin{
         $users=new UserDTO();
         $users=UserDAO::getUser();
         $adresse=new AdresseDTO();
+
         foreach ($users as $user){
-            echo $user->getPseudo();
-            echo '<BR>';
+            echo '<br>'.$user->getEmail().'<br>';
+            echo $user->getPseudo().'<br>';
             $adresse=AdresseDAO::getAdresseByIdUser($user->getId());
-            var_dump($adresse);
-            foreach ($adresse as $adresses){
-                echo $adresses->getVille();
-            }
+            echo $adresse->getVille().'<br>';
+            echo $adresse->getAdresseLigne().'<br>';
+            echo $adresse->getCodePostal().'<br>';
+            echo $adresse->getTelephone().'<br>';
+            echo '<a href="index.php?page=delete?id='.$user->getId().'">Supprimer</a>';
 
         }
+    }
+
+    public static function redirectUser(){
+        header("location:index.php?page=admin");
     }
 }

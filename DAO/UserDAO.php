@@ -63,4 +63,11 @@ class UserDAO{
 
 
     }
+
+    public static function deleteUserById($id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("DELETE FROM user where id=?");
+        $reponse->execute(array($id));
+
+    }
 }
