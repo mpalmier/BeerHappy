@@ -17,10 +17,10 @@ class ProduitDAO
         } else {
             foreach ($produit as $produits) {
                 $produitDTO = new ProduitDTO();
-                $produitDTO->setIdProduit($produits[0]);
+                $produitDTO->setId($produits[0]);
                 $produitDTO->setNom($produits[1]);
                 $produitDTO->setPrix($produits[2]);
-                $produitDTO->setCategorie($produits[3]);
+                $produitDTO->setStock($produits[3]);
                 $produitDTO->setPhoto($produits[4]);
                 $tab[] = $produitDTO;
             }
@@ -32,22 +32,27 @@ class ProduitDAO
     public static function getProduitByCategorie($categorie)
     {
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from produit where categorie=?");
+        $reponse = $bdd->prepare("SELECT * from produit where id_categorie=?");
         $reponse->execute(array($categorie));
         $produit = $reponse->fetchAll();
         $tab = array();
-        if (empty($produit[0])){
+        if (empty($produit[0]))
+        {
             return null;
         }
-        else{
-            $lproduit=$produit[0];
-            $produitDTO = new ProduitDTO();
-            $produitDTO->setIdProduit($lproduit[0]);
-            $produitDTO->setNom($lproduit[1]);
-            $produitDTO->setPrix($lproduit[2]);
-            $produitDTO->setCategorie($lproduit[3]);
-            $produitDTO->setPhoto($lproduit[4]);
-            $tab[] = $produitDTO;
+        else
+        {
+            foreach ($produit as $pt)
+            {
+                $produitDTO = new ProduitDTO();
+                $produitDTO->setId($pt[0]);
+                $produitDTO->setNom($pt[1]);
+                $produitDTO->setPrix($pt[2]);
+                $produitDTO->setStock($pt[3]);
+                $produitDTO->setPhoto($pt[4]);
+                $tab[] = $produitDTO;
+            }
+
             return $tab;
         }
     }
@@ -64,10 +69,10 @@ class ProduitDAO
         else{
             $lproduit=$produit[0];
             $produitDTO = new ProduitDTO();
-            $produitDTO->setIdProduit($lproduit[0]);
+            $produitDTO->setId($lproduit[0]);
             $produitDTO->setNom($lproduit[1]);
             $produitDTO->setPrix($lproduit[2]);
-            $produitDTO->setCategorie($lproduit[3]);
+            $produitDTO->setStock($lproduit[3]);
             $produitDTO->setPhoto($lproduit[4]);
             return $produitDTO;
         }

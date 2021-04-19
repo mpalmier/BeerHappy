@@ -25,20 +25,27 @@ class SuperController
                 break;
 
             case "produit" :
+                include_once('DAO/ProduitDAO.php');
+                include_once ('DTO/ProduitDTO.php');
+                include_once ('page/produits/ControllerProduit.php');
+
                 $instanceController = new ControllerProduit();
                 $instanceController->includeView();
+
                 break;
 
             case "carte" :
                 include_once('DAO/UserDAO.php');
                 include_once('DTO/UserDTO.php');
+                include_once('DAO/CategorieDAO.php');
+                include_once('DTO/CategorieDTO.php');
+                include_once('page/carte/ControllerCarte.php');
                 include_once('page/Admin/ControllerAdmin.php');
 
                 include_once ("page/carte/ControllerCarte.php");
                 $instanceController = new ControllerCarte();
                 $instanceController->includeView();
                 break;
-
 
             case "accueil":
                 include_once ("page/Accueil/ControllerAccueil.php");
