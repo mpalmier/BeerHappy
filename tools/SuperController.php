@@ -26,10 +26,20 @@ class SuperController
 
             case "produit" :
                 include_once('DAO/ProduitDAO.php');
-                include_once ('DTO/ProduitDTO.php');
-                include_once ('page/produits/ControllerProduit.php');
+                include_once('DTO/ProduitDTO.php');
+                include_once('page/produits/ControllerProduit.php');
 
                 $instanceController = new ControllerProduit();
+                $instanceController->includeView();
+
+                break;
+
+            case "details" :
+                include_once('DAO/ProduitDAO.php');
+                include_once('DTO/ProduitDTO.php');
+                include_once('page/details/ControllerDetails.php');
+
+                $instanceController = new ControllerDetails();
                 $instanceController->includeView();
 
                 break;

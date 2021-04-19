@@ -15,8 +15,6 @@ class ControllerProduit
         {
             echo '<br>
                 <a href="index.php?page=details&id='.$pt->getId().'">'.$pt->getNom().'</a>
-                <p>Prix : '.$pt->getPrix().' €</p>
-                <p>Stock : '.$pt->getStock().'</p>
                 <img src="'.$pt->getPhoto().'">';
 
         }

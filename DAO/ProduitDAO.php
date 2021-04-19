@@ -63,6 +63,7 @@ class ProduitDAO
         $reponse = $bdd->prepare("SELECT * from produit where id=?");
         $reponse->execute(array($id));
         $produit = $reponse->fetchAll();
+        $tab = array();
         if (empty($produit[0])){
             return null;
         }
@@ -74,8 +75,9 @@ class ProduitDAO
             $produitDTO->setPrix($lproduit[2]);
             $produitDTO->setStock($lproduit[3]);
             $produitDTO->setPhoto($lproduit[4]);
-            return $produitDTO;
+            $tab[] = $produitDTO;
         }
+        return $tab;
     }
 
 }
