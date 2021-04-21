@@ -8,20 +8,43 @@ class ControllerInscription
         include_once("inscription.php");
     }
 
-    public static function createAccount($identifiant, $mdp)
+    public static function createAccount()
     {
-        $inscription = $dbb->prepare('INSERT INTO log( mail, user, password, photo_profil) VALUES (?,?,sha1(?),?)');
-        $inscription->execute(array($_POST['Email'],$_POST['Username'],$_POST['Password'],$pp));
+        $user = new UserDTO();
+        $user = UserDAO::getUser();
+        $erreur=0;
+
+        foreach ($user as $u) {
+            if ($u->getPseudo() == $_POST['username']) {
+                echo "Ce nom d'utilisateur est déjà utilisé";
+                $erreur = 1;
+                break;
+            } elseif ($u->getEmail() == $_POST['email']) {
+                echo "Cette email est déjà utilisé";
+                $erreur = 1;
+                break;
+            }
+        }
+
+        if ($erreur == 0)
+        {
+            if ($_POST['password'] == $_POST['re_password']) {
+                UserDAO::setUserAccount($_POST['email'], $_POST['username'], $_POST['password']);
+                ControllerInscription::redirectUser();
+            }
+
+            else {
+                echo "Les mot de passes de correspondent pas ";
+            }
+        }
+
+
     }
+
 
     public static function redirectUser()
     {
         header('Location: index.php?page=connexion');
-    }
-
-    public static function redirectUserFalse()
-    {
-        include_once('inscriptionFalse.php');
     }
 
 }

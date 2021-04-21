@@ -16,4 +16,7 @@
             <input type="submit" value='Connexion'>
         </form>
     </body>
+
+    <p>Si ta pas de compte clique <a href="index.php?page=inscription">ici</a></p>
+
 </html>

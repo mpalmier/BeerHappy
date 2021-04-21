@@ -86,8 +86,8 @@ class SuperController
                 break;
 
             case "inscription" :
-                include_once('DAO/UserDAO.php');
                 include_once('DTO/UserDTO.php');
+                include_once('DAO/UserDAO.php');
                 include_once("page/inscription/ControllerInscription.php");
 
                 $instanceController = new ControllerInscription();

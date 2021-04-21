@@ -1,32 +1,43 @@
 <?php
 
-class UserDAO{
-    public static function getUser() {
-    $bdd = DatabaseLinker::getConnexion();
-	$reponse = $bdd->prepare("SELECT * from user");
-	$reponse->execute();
-	$user = $reponse->fetchAll();
-	$tab=Array(); 
-	if (empty($user[0])){
-		return null;
-	}
-	else{
-		foreach ($user as $users) {
-                    $userDTO = new UserDTO();
-                    $userDTO->setId($users[0]);
-                    $userDTO->setEmail($users[1]);
-                    $userDTO->setPseudo($users[2]);
-                    $userDTO->setPassword($users[3]);
-                    $userDTO->setArgent($users[4]);
-                    $userDTO->setAdmin($users[5]);
-                    $tab[]=$userDTO; 
-		}
-                
+class UserDAO
+{
+    public static function getUser()
+    {
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("SELECT * from user");
+        $reponse->execute();
+        $user = $reponse->fetchAll();
+        $tab=Array();
+        if (empty($user[0]))
+        {
+            return null;
+        }
+        else
+        {
+            foreach ($user as $users)
+            {
+                $userDTO = new UserDTO();
+                $userDTO->setId($users[0]);
+                $userDTO->setEmail($users[1]);
+                $userDTO->setPseudo($users[2]);
+                $userDTO->setPassword($users[3]);
+                $userDTO->setArgent($users[4]);
+                $userDTO->setAdmin($users[5]);
+                $tab[]=$userDTO;
+            }
+
             return $tab;
         }
     }
-    
-    
+
+    public static function setUserAccount($email, $identifiant, $mdp)
+    {
+        $bdd = DatabaseLinker::getConnexion();
+        $inscription = $bdd->prepare('INSERT INTO user( email, pseudo, password) VALUES (?,?,sha1(?))');
+        $inscription->execute(array($email, $identifiant, $mdp));
+    }
+
     public static function getUserById($id,$mdp){
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("SELECT * from user where pseudo=? AND password=?");

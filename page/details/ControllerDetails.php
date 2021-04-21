@@ -18,8 +18,8 @@ class ControllerDetails
             Prix : '.$ptd->getPrix().'<br>
             Stock : '.$ptd->getStock().'<br>
             Photo : <img src="'.$ptd->getPhoto().'">
-            <a href="">Commander</a>';
-
+            <a href="">Ajouter au panier</a>
+            <a href='.$_SERVER["HTTP_REFERER"].'>Retour</a>';
 
         }
 
