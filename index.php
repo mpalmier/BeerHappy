@@ -7,7 +7,10 @@
 <body>
 
 <?php
+
+include_once("page/Header-Footer/header.php");
 include_once("tools/SuperController.php");
+
 $page = "interdit";
 
 if(!empty($_GET['page'])) {
@@ -15,7 +18,10 @@ if(!empty($_GET['page'])) {
 }
 
 SuperController::callPage($page);
+
 ?>
+
+
 
 </body>
 </html>
