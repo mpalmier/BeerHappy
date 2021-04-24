@@ -1,0 +1,3 @@
+<?php
+
+ControllerDeconnexion::setDeconnexionDestroy();

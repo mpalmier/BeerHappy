@@ -1,0 +1,5 @@
+.align {
+    display: grid;
+    place-items: center;
+    margin-top: -75px;
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="assets/css/style_connexion-inscription.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_inscription.css">
 </head>
 <body class="align">
 <div class="grid">

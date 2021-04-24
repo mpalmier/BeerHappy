@@ -15,8 +15,8 @@
     BeerHappy est un site de vente en ligne de produits réservé aux adultes.
     Vous devez avoir 18 ans ou plus pour entrer. &mdash;
     <span></span>
-    <a href="index.php?page=accueil">Oui je suis conscient des risques.</a>
-    <a href="index.php?page=connexion">Connecte toi mec t un bg</a>
+    <a href="index.php?page=accueil">Oui j'ai plus de 18 ans</a> ou
+    <a href="index.php?page=connexion">Connectez-vous</a>
 </p>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>

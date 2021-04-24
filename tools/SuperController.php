@@ -7,6 +7,16 @@ class SuperController
     public static function callPage($page)
     {
         include_once('tools/DatabaseLinker.php');
+        if (isset($_GET['page']))
+        {
+            if (isset($_GET['page']) || $_GET['page']=="interdit")
+            {
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once('page/Admin/ControllerAdmin.php');
+                include_once("page/Header-Footer/header.php");
+            }
+        }
 
         switch($page)
         {
@@ -92,6 +102,13 @@ class SuperController
 
                 $instanceController = new ControllerInscription();
                 $instanceController->includeView();
+                break;
+
+            case "deconnexion" :
+                include_once("page/deconnexion/ControllerDeconnexion.php");
+
+                $instanceController = new ControllerDeconnexion();
+                $instanceController->getDeconnexion();
                 break;
 
             case "admin":

@@ -8,15 +8,6 @@
 
 <?php
 
-if (isset($_GET['page']))
-{
-    if (isset($_GET['page']) || $_GET['page']=="interdit")
-    {
-        include_once("page/Header-Footer/header.php");
-    }
-}
-
-
 include_once("tools/SuperController.php");
 
 $page = "interdit";

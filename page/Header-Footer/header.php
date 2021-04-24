@@ -9,12 +9,35 @@
     <header>
         <a href="#" class="logo">Logo</a>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.php?page=accueil">Accueil</a></li>
+            <li><a href="index.php?page=carte">Cartes</a></li>
+            <li><a href="index.php?page=contact">Contact</a></li>
+            <?php
+            if (!isset($_SESSION['id']))
+            {
+                if (!isset($_SESSION['id']))
+                {
+                    echo "<li><a href='index.php?page=connexion'>Connectez-vous</a></li>";
+                }
+            }
+
+            if (isset($_SESSION['id']))
+            {
+                if (ControllerAdmin::isAdmin($_SESSION['id']) == true)
+                {
+                    echo "<li><a href='index.php?page=admin'>Admin</a></li>";
+                }
+            }
+
+            if (isset($_SESSION['id']))
+            {
+                if (isset($_SESSION['id']))
+                {
+                    echo "<li><a href='index.php?page=deconnexion'>Déconnexion</a></li>";
+                }
+            }
+            ?>
+
         </ul>
     </header>
     <section class="banner"></section>
