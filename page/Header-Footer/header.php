@@ -36,6 +36,15 @@
                     echo "<li><a href='index.php?page=deconnexion'>Déconnexion</a></li>";
                 }
             }
+
+            if (isset($_SESSION['panier']))
+            {
+                if (isset($_SESSION['panier']))
+                {
+                    echo "Panier :".count($_SESSION['panier']);
+                    var_dump($_SESSION['panier']);
+                }
+            }
             ?>
 
         </ul>

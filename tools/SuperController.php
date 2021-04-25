@@ -124,6 +124,12 @@ class SuperController
                     }
                 }
 
+            case "panier":
+                include_once('DAO/ProduitDAO.php');
+                include_once('DTO/ProduitDTO.php');
+                include_once('page/Panier/ControllerPanier.php');
+                $instanceController=new ControllerPanier();
+                $instanceController->includeView();
 
 
 
