@@ -8,6 +8,11 @@ class ControllerPanier
         include_once('panier.php');
     }
 
+    function launchPanier()
+    {
+        include_once('panierLaunch.php');
+    }
+
     function getPanierVerif()
     {
         if(isset($_GET['id']))
@@ -17,15 +22,14 @@ class ControllerPanier
             {
                 die("Ce produit n'existe pas");
             }
-            /*header('Location: index.php?page=carte');*/
-            echo "Produit bien ajouté a votre panié";
-            var_dump($_SESSION['panier']);
+            $this->addProduct($_GET['id']);
+            header('Location: index.php?page=carte');
         } else {
             die("Vous n'avez pas sélectionné de produit à ajouter");
         }
     }
 
     function addProduct($product_id) {
-        $_SESSION['panier'][$product_id] = 1;
+        $_SESSION['panier'][$product_id]= $product_id;
     }
 }

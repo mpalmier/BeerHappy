@@ -18,7 +18,7 @@ class ControllerDetails
             Prix : '.$ptd->getPrix().'<br>
             Stock : '.$ptd->getStock().'<br>
             Photo : <img src="'.$ptd->getPhoto().'">
-            <a href="index.php?page=panier&id='.$_GET['id'].'">Ajouter au panier</a>
+            <a href="index.php?page=launchPanier&id='.$_GET['id'].'">Ajouter au panier</a>
             <a href='.$_SERVER["HTTP_REFERER"].'>Retour</a>';
 
         }

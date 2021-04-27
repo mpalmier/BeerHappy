@@ -41,8 +41,7 @@
             {
                 if (isset($_SESSION['panier']))
                 {
-                    echo "Panier :".count($_SESSION['panier']);
-                    var_dump($_SESSION['panier']);
+                    echo "<li><a href='index.php?page=panier'>Panier : ".count($_SESSION['panier'])."</a></li>";
                 }
             }
             ?>
