@@ -24,4 +24,9 @@ class ControllerDetails
         }
 
     }
+
+    public static function SuprPanier()
+    {
+
+    }
 }

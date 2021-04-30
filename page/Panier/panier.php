@@ -18,6 +18,7 @@ foreach ($tab as $item)
             Prix : '.$pt->getPrix().'<br>
             Quantité :<br>
             Photo : <img src="'.$pt->getPhoto().'">
-            <a href='.$_SERVER["HTTP_REFERER"].'>Retour</a>';
+            <a href='.$_SERVER["HTTP_REFERER"].'>Retour</a>
+            <a href="supprimerPanier.php">Supprimé</a>';
     }
 }
