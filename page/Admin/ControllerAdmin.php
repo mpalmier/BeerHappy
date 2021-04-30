@@ -35,12 +35,13 @@ class ControllerAdmin{
             echo '<br>'.$user->getEmail().'<br>';
             echo $user->getPseudo().'<br>';
             $adresse=AdresseDAO::getAdresseByIdUser($user->getId());
-            echo $adresse->getVille().'<br>';
-            echo $adresse->getAdresseLigne().'<br>';
-            echo $adresse->getCodePostal().'<br>';
-            echo $adresse->getTelephone().'<br>';
-            echo '<a href="index.php?page=delete?id='.$user->getId().'">Supprimer</a>';
-
+            if (!empty($adresse)) {
+                echo $adresse->getVille() . '<br>';
+                echo $adresse->getAdresseLigne() . '<br>';
+                echo $adresse->getCodePostal() . '<br>';
+                echo $adresse->getTelephone() . '<br>';
+            }
+            echo '<a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a><br>';
         }
     }
 

@@ -123,6 +123,7 @@ class SuperController
                         $instanceController->insertView();
                     }
                 }
+                break;
 
             case "launchPanier":
                 include_once('DAO/ProduitDAO.php');
@@ -130,6 +131,7 @@ class SuperController
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
                 $instanceController->launchPanier();
+                break;
 
             case "panier":
                 include_once('DAO/ProduitDAO.php');
@@ -137,6 +139,39 @@ class SuperController
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
                 $instanceController->includeView();
+                break;
+
+            case "deleteAdmin":
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                include_once('DAO/AdresseDAO.php');
+                include_once('DTO/AdresseDTO.php');
+                include_once('page/Admin/ControllerAdmin.php');
+                $instanceController=new ControllerAdmin();
+                echo '<p> prout</p>';
+                AdresseDAO::deleteAdresseById($_GET['id']);
+                UserDAO::deleteUserById($_GET['id']);
+                $instanceController->redirectUser();
+                break;
+
+            case "AdminProduit":
+                include_once('DAO/ProduitDAO.php');
+                include_once ('DTO/ProduitDTO.php');
+                include_once('page/AdminProduit/AdminProduit.php');
+
+
+
+            case "AjouterProduit":
+                include_once('DAO/ProduitDAO.php');
+                include_once ('DTO/ProduitDTO.php');
+                include('page/AdminProduit/ControllerAdminProduit.php');
+                $instanceController=new ControllerAdminProduit();
+                if($instanceController->isGood()==true){
+
+                }
+
+
+
 
 
         }
