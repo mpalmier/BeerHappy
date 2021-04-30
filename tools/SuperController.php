@@ -165,18 +165,29 @@ class SuperController
             case "AdminProduit":
                 include_once('DAO/ProduitDAO.php');
                 include_once ('DTO/ProduitDTO.php');
+                include_once('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminProduit/ControllerAdminProduit.php');
                 include_once('page/AdminProduit/AdminProduit.php');
+
+
 
 
 
             case "AjouterProduit":
                 include_once('DAO/ProduitDAO.php');
                 include_once ('DTO/ProduitDTO.php');
-                include('page/AdminProduit/ControllerAdminProduit.php');
-                $instanceController=new ControllerAdminProduit();
-                if($instanceController->isGood()==true){
-
+                include_once('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminProduit/ControllerAdminProduit.php');
+                if(isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+                    $instanceController = new ControllerAdminProduit();
+                    $photo = $instanceController->testPhoto();
+                    ProduitDAO::addProduit($instanceController->publierProduit($photo));
                 }
+
+
+
 
 
 

@@ -80,10 +80,11 @@ class ProduitDAO
         return $tab;
     }
 
-    public static function addProduit(ProduitDTO $produit){
+    public static function addProduit($produit){
         $bdd = DatabaseLinker::getConnexion();
+        var_dump($produit);
         $reponse = $bdd->prepare("INSERT INTO produit (nom,prix,stock,photo,id_categorie) VALUES(?,?,?,?,?)");
-        $reponse->execute(array($produit->getNom(),$produit->getPrix(),$produit->getStock(),$produit->getPhoto(),$produit->getIdCategorie()));
+        $reponse->execute(array($produit->getNom(),$produit->getPrix(),$produit->getStock(),$produit->getPhoto(),$produit->getIdCategorie));
     }
 
 }

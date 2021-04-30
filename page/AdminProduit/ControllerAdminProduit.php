@@ -1,33 +1,61 @@
 <?php
  class ControllerAdminProduit{
-     public static function isGood(){
-         if($_SERVER["REQUEST_METHOD"] == "POST"){
-             if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
-                 $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                 $filename = $_FILES["photo"]["name"];
-                 $filetype = $_FILES["photo"]["type"];
-                 $filesize = $_FILES["photo"]["size"];
+    public static function testPhoto(){
+        if (isset($_POST['submit'])){
+            $maxSize=100000;
+            $validExt=array('.jpg','.jpeg','.gif','.png');
+            if($_FILES['upload_file']['error'] >0){
+                echo"Une erreur est survenue lors du transfet";
+                die;
+            }
+            $fileSize=$_FILES['upload_file']['size'];
+            if ($fileSize>$maxSize){
+                return false;
+            }
+            $fileName=$_FILES['upload_file']['name'];
+            $fileExt=".".strtolower(substr(strrchr($fileName,'.'),1));
 
-                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                 if(!array_key_exists($ext, $allowed)) die("Erreur : Veuillez sélectionner un format de fichier valide.");
 
-                 $maxsize = 5 * 1024 * 1024;
-                 if($filesize > $maxsize) die("Error: La taille du fichier est supérieure à la limite autorisée.");
+            if (!in_array($fileExt,$validExt)){
+                echo "Le fichier n'est pas une image";
+                return false;
+            }
 
-                 if(in_array($filetype, $allowed)){
-                     if(file_exists("upload/" . $_FILES["photo"]["name"])){
-                         echo $_FILES["photo"]["name"] . " existe déjà.";
-                     } else{
-                         move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $_FILES["photo"]["name"]);
-                         return TRUE;
-                     }
-                 } else{
-                     return FALSE;
-                 }
-             } else{
-                 return FALSE;
-             }
-         }
+            $tmpname=$_FILES['upload_file']["tmp_name"];
+            $NomUnique=md5(uniqid(rand(),true));
+            $fileName="assets/photoproduits/".$NomUnique.$fileExt;
+            $result=move_uploaded_file($tmpname,$fileName);
+            if ($result){
+                return $fileName;
+            }
+        }
+    }
 
-     }
+
+
+    public static function publierProduit($photo){
+            if(isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+                $produitDTO = new ProduitDTO();
+                $produitDTO->setNom($_POST['nom']);
+                $produitDTO->setStock($_POST['stock']);
+                $produitDTO->setPrix($_POST['prix']);
+                $produitDTO->setPhoto($photo);
+                $produitDTO->setIdCategorie($_POST['id']);
+                var_dump($produitDTO);
+               return $produitDTO;
+            }
+        }
+
+
+    public static function afficherCategorie(){
+        $categorie=new CategorieDTO();
+        $categorie=CategorieDAO::getCategorie();
+        foreach ($categorie as $cat)
+        {
+            echo '<option value="'.$cat->getId().'">'.$cat->getNom().'</option>';
+        }
+
+    }
+
+
 }
