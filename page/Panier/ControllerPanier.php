@@ -30,6 +30,24 @@ class ControllerPanier
     }
 
     function addProduct($product_id) {
-        $_SESSION['panier'][$product_id]= $product_id;
+        if(isset($_SESSION['panier'][$product_id])) {
+            $_SESSION['panier'][$product_id]++;
+        } else {
+            $_SESSION['panier'][$product_id] = $product_id;
+        }
+
+    }
+
+    public static function SuprPanier()
+    {
+        if(isset($_GET['id']))
+        {
+            if(empty($_GET['id']))
+            {
+                echo "Aucun produit sélectionné";
+            }
+            unset($_SESSION['panier'][$_GET['id']]);
+            header('Location: index.php?page=panier');
+        }
     }
 }
