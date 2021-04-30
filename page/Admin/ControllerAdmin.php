@@ -41,7 +41,8 @@ class ControllerAdmin{
                 echo $adresse->getCodePostal() . '<br>';
                 echo $adresse->getTelephone() . '<br>';
             }
-            echo '<p >Supprimer</p>';
+            echo '<a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a><br>';
+
         }
     }
 

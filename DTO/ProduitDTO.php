@@ -6,6 +6,23 @@ class ProduitDTO{
     private $prix;
     private $stock;
     private $photo;
+    private $idCategorie;
+
+    /**
+     * @return mixed
+     */
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * @param mixed $idCategorie
+     */
+    public function setIdCategorie($idCategorie): void
+    {
+        $this->idCategorie = $idCategorie;
+    }
 
     /**
      * @return mixed

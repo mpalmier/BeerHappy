@@ -40,8 +40,7 @@
                 $produitDTO->setStock($_POST['stock']);
                 $produitDTO->setPrix($_POST['prix']);
                 $produitDTO->setPhoto($photo);
-                $produitDTO->setIdCategorie($_POST['id']);
-                var_dump($produitDTO);
+                $produitDTO->setIdCategorie($_POST['menu_destination']);
                return $produitDTO;
             }
         }
@@ -52,7 +51,7 @@
         $categorie=CategorieDAO::getCategorie();
         foreach ($categorie as $cat)
         {
-            echo '<option value="'.$cat->getId().'">'.$cat->getNom().'</option>';
+            echo '<option name="idcategorie"  value="'.$cat->getId().'">'.$cat->getNom().'</option>';
         }
 
     }

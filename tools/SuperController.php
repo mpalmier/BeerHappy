@@ -156,7 +156,6 @@ class SuperController
                 include_once('DTO/AdresseDTO.php');
                 include_once('page/Admin/ControllerAdmin.php');
                 $instanceController=new ControllerAdmin();
-                echo '<p> prout</p>';
                 AdresseDAO::deleteAdresseById($_GET['id']);
                 UserDAO::deleteUserById($_GET['id']);
                 $instanceController->redirectUser();
