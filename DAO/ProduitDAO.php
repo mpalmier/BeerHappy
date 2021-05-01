@@ -87,4 +87,11 @@ class ProduitDAO
         $reponse->execute(array($produit->getNom(),$produit->getPrix(),$produit->getStock(),$produit->getPhoto(),$produit->getIdCategorie()));
     }
 
+
+    public static function supprimerProduit($id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("DELETE from produit where id=?");
+        $reponse->execute(array($id));
+    }
+
 }

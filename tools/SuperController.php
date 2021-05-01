@@ -169,6 +169,8 @@ class SuperController
                 include_once('page/AdminProduit/ControllerAdminProduit.php');
                 include_once('page/AdminProduit/AdminProduit.php');
 
+                break;
+
 
 
 
@@ -184,6 +186,20 @@ class SuperController
                     $photo = $instanceController->testPhoto();
                     ProduitDAO::addProduit($instanceController->publierProduit($photo));
                 }
+                $instanceController=new ControllerAdminProduit();
+                $instanceController->redirectUser();
+                break;
+
+            case "supprimerProduit";
+                include_once('DAO/ProduitDAO.php');
+                include_once ('DTO/ProduitDTO.php');
+                include_once ('page/AdminProduit/ControllerAdminProduit.php');
+                $instanceController=new ControllerAdminProduit();
+                ProduitDAO::supprimerProduit($_GET['id']);
+                $instanceController->redirectUser();
+
+
+
 
 
 

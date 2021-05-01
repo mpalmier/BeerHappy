@@ -10,9 +10,11 @@
         ControllerAdminProduit::afficherCategorie();
         ?>
     </select>
-
     <p><input type="submit" name="submit" value="Ajouter un produit"></p>
 </form>
+
+<?php
+ControllerAdminProduit::afficherListeProduits();
 
 
 

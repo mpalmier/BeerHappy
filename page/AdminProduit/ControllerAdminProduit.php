@@ -56,5 +56,24 @@
 
     }
 
+    public static function afficherListeProduits()
+    {
+        $produit = ProduitDAO::getProduit();
+        if (!empty($produit)) {
+        foreach ($produit as $produits) {
+            echo "Nom du produit : " . $produits->getNom() . "<br>";
+            echo "Prix du produit : " . $produits->getPrix() . "<br>";
+            echo "Stock restant : " . $produits->getStock() . "<br>";
+            echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" . "<br>" . "<br>";
+
+        }
+    }
+
+    }
+
+    public static function redirectUser(){
+            header("location:index.php?page=AdminProduit");
+    }
+
 
 }
