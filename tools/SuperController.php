@@ -166,9 +166,19 @@ class SuperController
                 include_once ('DTO/ProduitDTO.php');
                 include_once('DAO/CategorieDAO.php');
                 include_once ('DTO/CategorieDTO.php');
-                include_once('page/AdminProduit/ControllerAdminProduit.php');
-                include_once('page/AdminProduit/AdminProduit.php');
-
+                include_once('DAO/UserDAO.php');
+                include_once('DTO/UserDTO.php');
+                $instanceController=new ControllerAdmin();
+                if (isset($_SESSION['id'])) {
+                    if ($instanceController->isAdmin($_SESSION['id']) == true) {
+                        include_once('page/Admin/ControllerAdmin.php');
+                        include_once('page/AdminProduit/ControllerAdminProduit.php');
+                        include_once('page/AdminProduit/AdminProduit.php');
+                    }
+                }
+                else {
+                    header('index.php?page=carte');
+                }
                 break;
 
 
