@@ -16,6 +16,7 @@ foreach ($tab as $item)
             Nom : '.$pt->getNom().'<br>
             Prix : '.$pt->getPrix().'<br>
             Photo : <img src="'.$pt->getPhoto().'">
+            <input>'.$_SESSION['panier']['qtnProduit'].'</input>
             <a href='.$_SERVER["HTTP_REFERER"].'>Retour</a>
             <a href="index.php?page=supprimerPanier&id='.$pt->getId().'">Supprimé</a>';
         $prix1 = $pt->getPrix();
