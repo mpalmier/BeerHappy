@@ -31,18 +31,19 @@ class ControllerPanier
 
     function addProduct($product_id) {
         $_SESSION['panier'][$product_id] = $product_id;
+        $_SESSION['qte'][$product_id] = 1;
 
     }
 
-    public static function SuprPanier()
+    public static function SuprPanier($supr_id)
     {
-        if(isset($_GET['id']))
+        if(isset($supr_id))
         {
-            if(empty($_GET['id']))
+            if(empty($supr_id))
             {
                 echo "Aucun produit sélectionné";
             }
-            unset($_SESSION['panier'][$_GET['id']]);
+            unset($_SESSION['panier'][$supr_id]);
             header('Location: index.php?page=panier');
         }
     }

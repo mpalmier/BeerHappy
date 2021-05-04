@@ -146,7 +146,7 @@ class SuperController
                 include_once('DTO/ProduitDTO.php');
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
-                $instanceController->SuprPanier();
+                $instanceController->SuprPanier($_GET['id']);
                 break;
 
             case "deleteAdmin":
