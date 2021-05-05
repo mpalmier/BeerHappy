@@ -61,10 +61,10 @@
         $produit = ProduitDAO::getProduit();
         if (!empty($produit)) {
         foreach ($produit as $produits) {
-            echo "Nom du produit : " . $produits->getNom() . "<br>";
-            echo "Prix du produit : " . $produits->getPrix() . "<br>";
-            echo "Stock restant : " . $produits->getStock() . "<br>";
-            echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" . "<br>" . "<br>";
+            echo "Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit'> <input type='text' name='nom'>";
+            echo "Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'>";
+            echo "Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' value='Modifier'></form>";
+            echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" ;
 
         }
     }
@@ -74,6 +74,9 @@
     public static function redirectUser(){
             header("location:index.php?page=AdminProduit");
     }
+
+
+
 
 
 }

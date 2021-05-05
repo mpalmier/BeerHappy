@@ -82,7 +82,6 @@ class ProduitDAO
 
     public static function addProduit($produit){
         $bdd = DatabaseLinker::getConnexion();
-        var_dump($produit);
         $reponse = $bdd->prepare("INSERT INTO produit (nom,prix,stock,photo,id_categorie) VALUES(?,?,?,?,?)");
         $reponse->execute(array($produit->getNom(),$produit->getPrix(),$produit->getStock(),$produit->getPhoto(),$produit->getIdCategorie()));
     }
@@ -92,6 +91,12 @@ class ProduitDAO
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("DELETE from produit where id=?");
         $reponse->execute(array($id));
+    }
+
+    public static function modifierProduit($produit){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE produit set nom=? prix=? stock=?");
+        $reponse->execute(array($produit->getNom(),$produit->getPrix(),$produit->getStock()));
     }
 
 }
