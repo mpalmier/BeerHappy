@@ -31,7 +31,16 @@ class ControllerPanier
 
     function addProduct($product_id) {
         $_SESSION['panier'][$product_id] = $product_id;
-        $_SESSION['qte'][$product_id] = 1;
+        $_SESSION['panier']['qteProduit'] = '1';
+
+    }
+
+    function addQuantite($id) {
+        $_SESSION[$id]['qteProduit']++;
+        header('Location: index.php?page=panier');
+    }
+
+    function suprQuantite() {
 
     }
 

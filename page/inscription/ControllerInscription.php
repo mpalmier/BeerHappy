@@ -1,6 +1,5 @@
 <?php
 
-
 class ControllerInscription
 {
     public static function includeView()
@@ -14,12 +13,17 @@ class ControllerInscription
         $user = UserDAO::getUser();
         $erreur=0;
 
-        foreach ($user as $u) {
-            if ($u->getPseudo() == $_POST['username']) {
+        foreach ($user as $u)
+        {
+            if ($u->getPseudo() == $_POST['username'])
+            {
                 echo "Ce nom d'utilisateur est déjà utilisé";
                 $erreur = 1;
                 break;
-            } elseif ($u->getEmail() == $_POST['email']) {
+            }
+
+            elseif ($u->getEmail() == $_POST['email'])
+            {
                 echo "Cette email est déjà utilisé";
                 $erreur = 1;
                 break;
