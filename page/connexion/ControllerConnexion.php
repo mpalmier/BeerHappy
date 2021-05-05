@@ -20,7 +20,6 @@ class ControllerConnexion {
 
             $_SESSION['id']=$Users->getId();
             $_SESSION['panier'] = array();
-            $_SESSION['panier']['qteProduit'] = array();
             return $auth;
         }
         else

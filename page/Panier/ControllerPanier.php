@@ -29,11 +29,12 @@ class ControllerPanier
         }
     }
 
-    function addProduct($product_id) {
+    function addProduct($product_id)
+    {
         $_SESSION['panier'][$product_id] = $product_id;
         $_SESSION['panier']['qteProduit'] = '1';
-
     }
+
 
     function addQuantite($id) {
         $_SESSION[$id]['qteProduit']++;
