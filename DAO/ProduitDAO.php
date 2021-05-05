@@ -60,7 +60,7 @@ class ProduitDAO
     public static function getProduitById($id)
     {
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from produit where id=?");
+        $reponse = $bdd->prepare("SELECT * from produit where id = ?");
         $reponse->execute(array($id));
         $produit = $reponse->fetchAll();
         $tab = array();
