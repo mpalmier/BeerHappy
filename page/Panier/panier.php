@@ -17,7 +17,7 @@ foreach ($_SESSION['panier'] as $key => $value)
                 Prix : ' . $pt->getPrix() . '<br>
                 Photo : <img src="' . $pt->getPhoto() . '"><br>
                 Quantité :  <a href="index.php?page=suprQuantite?id='.$key.'">Moins</a>'.$value[1].'
-                <a href="index.php?page=c?id='.$key.'">Plus</a><br>
+                <a href="index.php?page=addQuantite?id='.$key.'">Plus</a><br>
                 <a href=' . $_SERVER["HTTP_REFERER"] . '>Retour</a>
                 <a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a>';
                 $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
