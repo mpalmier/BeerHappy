@@ -18,7 +18,7 @@ class ControllerPanier
                 die("Ce produit n'existe pas");
             }
             $this->addProduct($_GET['id']);
-            header('Location: index.php?page=carte');
+            /*header('Location: index.php?page=carte');*/
         } else {
             die("Vous n'avez pas sélectionné de produit à ajouter");
         }
@@ -28,7 +28,7 @@ class ControllerPanier
     {
         $idProduit = $product_id;
         $quantite = 1;
-        $_SESSION['Panier'] = [$idProduit, $quantite];
+        $_SESSION['panier'][] = [$idProduit, $quantite];
     }
 
     public static function SuprPanier($supr_id)
@@ -39,8 +39,12 @@ class ControllerPanier
             {
                 echo "Aucun produit sélectionné";
             }
+
             unset($_SESSION['panier'][$supr_id]);
-            header('Location: index.php?page=panier');
+            var_dump($_SESSION['panier']);
+
+
+            /*header('Location: index.php?page=panier');*/
         }
     }
 }

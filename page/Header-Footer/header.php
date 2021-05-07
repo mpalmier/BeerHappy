@@ -37,9 +37,11 @@
                 }
             }
 
-            if (isset($_SESSION['panier'])) {
-                if (isset($_SESSION['panier'])) {
-                    echo "<li><a href='index.php?page=panier'>Panier : " . var_dump($_SESSION['panier']) . "</a></li>";
+            if (isset($_SESSION['panier']))
+            {
+                if (isset($_SESSION['panier']))
+                {
+                    echo "<li><a href='index.php?page=panier'>Panier : ".count($_SESSION['panier'])."</a></li>";
                 }
             }
             ?>
