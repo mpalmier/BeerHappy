@@ -1,6 +1,7 @@
 <?php
 
 $prix = 0;
+$prix1 = 0;
 
 foreach ($_SESSION['panier'] as $key => $value)
 {
@@ -15,12 +16,12 @@ foreach ($_SESSION['panier'] as $key => $value)
                 Nom : ' . $pt->getNom() . '<br>
                 Prix : ' . $pt->getPrix() . '<br>
                 Photo : <img src="' . $pt->getPhoto() . '"><br>
-                Quantité : <a href="index.php?page=addQuantite?id='.$pt->getId().'">Plus</a> '.$value[1].'
-                <a href="index.php?page=suprQuantite">Moins</a><br>
+                Quantité :  <a href="index.php?page=suprQuantite?id='.$key.'">Moins</a>'.$value[1].'
+                <a href="index.php?page=c?id='.$key.'">Plus</a><br>
                 <a href=' . $_SERVER["HTTP_REFERER"] . '>Retour</a>
-                <a href="index.php?page=supprimerPanier&id=' . $pt->getId() . '">Supprimé</a>';
-            $prix1 = $pt->getPrix();
-            $prix += $prix1;
+                <a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a>';
+                $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
+                $prix += $prix1;
         }
     }
 }

@@ -18,7 +18,7 @@ class ControllerPanier
                 die("Ce produit n'existe pas");
             }
             $this->addProduct($_GET['id']);
-            /*header('Location: index.php?page=carte');*/
+            header('Location: index.php?page=carte');
         } else {
             die("Vous n'avez pas sélectionné de produit à ajouter");
         }
@@ -26,25 +26,71 @@ class ControllerPanier
 
     function addProduct($product_id)
     {
-        $idProduit = $product_id;
         $quantite = 1;
-        $_SESSION['panier'][] = [$idProduit, $quantite];
+        $_SESSION['panier'][] =[$product_id, $quantite];
     }
 
     public static function SuprPanier($supr_id)
     {
         if(isset($supr_id))
         {
-            if(empty($supr_id))
+            foreach ($_SESSION['panier'] as $key => $value)
             {
-                echo "Aucun produit sélectionné";
+                if ($key == $supr_id)
+                {
+                    unset($_SESSION['panier'][$key]);
+                    header('Location: index.php?page=panier');
+                }
             }
+        }
 
-            unset($_SESSION['panier'][$supr_id]);
-            var_dump($_SESSION['panier']);
+    }
 
+    public static function suprQuantite($supr_id)
+    {
+        if(isset($supr_id))
+        {
+            foreach ($_SESSION['panier'] as $key => $value)
+            {
+                if ($key == $supr_id)
+                {
+                    if ($value[1] == 1)
+                    {
+                        ControllerPanier::SuprPanier($supr_id);
+                    }
+                    else {
+                        $value[1]--;
+                    }
 
-            /*header('Location: index.php?page=panier');*/
+                    header('Location: index.php?page=panier');
+                }
+            }
+        }
+
+    }
+
+    public static function addQuantite($supr_id)
+    {
+        if(isset($supr_id))
+        {
+            foreach ($_SESSION['panier'] as $key => $value)
+            {
+                if ($key == $supr_id)
+                {
+                    $value[1]++;
+                    header('Location: index.php?page=panier');
+                }
+            }
         }
     }
+
+    public static function getCalculPrixQte($prix,$qte)
+    {
+        if(isset($prix) && isset($qte))
+        {
+            $prix *= $qte;
+        }
+        return $prix;
+    }
+
 }
