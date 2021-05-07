@@ -214,7 +214,24 @@ class SuperController
                 }
                 AdminCarteController::redirectUser();
                 break;
-                
+
+            case "ModifierPseudo":
+                include_once('DTO/UserDTO.php');
+                include_once('DAO/UserDAO.php');
+                if (isset($_POST['pseudo']) && isset($_GET['id'])) {
+                    UserDAO::UpdatePseudoById($_POST['pseudo'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
+
+            case "ModifierMail":
+                include_once('DTO/UserDTO.php');
+                include_once('DAO/UserDAO.php');
+                if (isset($_POST['email']) && isset($_GET['id'])) {
+                    UserDAO::UpdateEmailById($_POST['email'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
         }
     }
 }

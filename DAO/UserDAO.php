@@ -102,4 +102,25 @@ class UserDAO
         $reponse->execute(array($id));
 
     }
+
+    public static function UpdatePseudoById($pseudo,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE user SET pseudo=? where id=?");
+        $reponse->execute(array($pseudo,$id));
+
+    }
+
+    public static function UpdateEmailById($email,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE user SET email=? where id=?");
+        $reponse->execute(array($email,$id));
+
+    }
+
+    public static function UpdateMdpById($mdp,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE user SET password=? where id=?");
+        $reponse->execute(array(sha1($mdp),$id));
+
+    }
 }

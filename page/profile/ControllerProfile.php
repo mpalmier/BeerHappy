@@ -39,4 +39,7 @@ class ControllerProfile
         }
     }
 }
+    public static function redirectUser(){
+        header("location:index.php?page=profile");
+    }
 }
