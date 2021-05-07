@@ -38,7 +38,7 @@ class UserDAO
         $inscription->execute(array($email, $identifiant, $mdp));
     }
 
-    public static function getUserById($id,$mdp){
+    public static function getUserConnexion($id,$mdp){
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("SELECT * from user where pseudo=? AND password=?");
         $reponse->execute(array($id,$mdp));

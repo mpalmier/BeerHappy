@@ -11,7 +11,7 @@ class ControllerConnexion {
         $auth = true;
         $mdp = sha1($mdp);
 
-        $Users = UserDAO::getUserById($identifiant, $mdp);
+        $Users = UserDAO::getUserConnexion($identifiant, $mdp);
 
         if ($Users != null)
         {
