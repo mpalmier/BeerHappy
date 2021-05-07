@@ -229,6 +229,8 @@ class SuperController
             case "profile";
                 include_once('DAO/UserDAO.php');
                 include_once ('DTO/UserDTO.php');
+                include_once('DAO/AdresseDAO.php');
+                include_once('DTO/AdresseDTO.php');
                 include_once ('page/profile/ControllerProfile.php');
                 $instanceController=new ControllerProfile();
                 $instanceController->includeView();
