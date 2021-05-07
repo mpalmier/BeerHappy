@@ -1,4 +1,7 @@
 <?php
+include_once ('DAO/CategorieDAO.php');
+include_once ('DTO/CategorieDTO.php');
+
 class AdminCarteController{
     public static function redirectUser(){
         header('Location:index.php?page=AdminCarte');

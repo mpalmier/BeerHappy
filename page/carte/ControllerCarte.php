@@ -1,5 +1,8 @@
 <?php
-
+include_once('DAO/UserDAO.php');
+include_once('DTO/UserDTO.php');
+include_once('DAO/CategorieDAO.php');
+include_once('DTO/CategorieDTO.php');
 class ControllerCarte
 {
     public static function includeView()

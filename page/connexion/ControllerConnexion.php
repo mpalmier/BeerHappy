@@ -1,5 +1,6 @@
 <?php
-
+include_once('DAO/UserDAO.php');
+include_once('DTO/UserDTO.php');
 class ControllerConnexion {
     public static function includeView(){
         include_once("connexion.php");

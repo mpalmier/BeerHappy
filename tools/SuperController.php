@@ -21,8 +21,6 @@ class SuperController
         switch($page)
         {
             case "interdit" :
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
                 include_once('page/Admin/ControllerAdmin.php');
                 include_once("page/interdiction/ControllerInterdiction.php");
                 $instanceController = new ControllerInterdiction();
@@ -35,33 +33,20 @@ class SuperController
                 break;
 
             case "produit" :
-                include_once('DAO/ProduitDAO.php');
-                include_once('DTO/ProduitDTO.php');
                 include_once('page/produits/ControllerProduit.php');
-
                 $instanceController = new ControllerProduit();
                 $instanceController->includeView();
-
                 break;
 
             case "details" :
-                include_once('DAO/ProduitDAO.php');
-                include_once('DTO/ProduitDTO.php');
                 include_once('page/details/ControllerDetails.php');
-
                 $instanceController = new ControllerDetails();
                 $instanceController->includeView();
-
                 break;
 
             case "carte" :
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/CategorieDAO.php');
-                include_once('DTO/CategorieDTO.php');
                 include_once('page/carte/ControllerCarte.php');
                 include_once('page/Admin/ControllerAdmin.php');
-
                 include_once ("page/carte/ControllerCarte.php");
                 $instanceController = new ControllerCarte();
                 $instanceController->includeView();
@@ -74,11 +59,7 @@ class SuperController
                 break;
 
             case "connexion" :
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
                 include_once("page/connexion/ControllerConnexion.php");
-
-
                 $instanceController = new ControllerConnexion();
                 $instanceController->includeView();
 
@@ -96,26 +77,18 @@ class SuperController
                 break;
 
             case "inscription" :
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/UserDAO.php');
                 include_once("page/inscription/ControllerInscription.php");
-
                 $instanceController = new ControllerInscription();
                 $instanceController->includeView();
                 break;
 
             case "deconnexion" :
                 include_once("page/deconnexion/ControllerDeconnexion.php");
-
                 $instanceController = new ControllerDeconnexion();
                 $instanceController->getDeconnexion();
                 break;
 
             case "admin":
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/AdresseDAO.php');
-                include_once('DTO/AdresseDTO.php');
                 include_once('page/Admin/ControllerAdmin.php');
                 $instanceController=new ControllerAdmin();
                 if (isset($_SESSION['id'])) {
@@ -126,24 +99,18 @@ class SuperController
                 break;
 
             case "launchPanier":
-                include_once('DAO/ProduitDAO.php');
-                include_once('DTO/ProduitDTO.php');
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
                 $instanceController->getPanierVerif();
                 break;
 
             case "panier":
-                include_once('DAO/ProduitDAO.php');
-                include_once('DTO/ProduitDTO.php');
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
                 $instanceController->includeView();
                 break;
 
             case "supprimerPanier":
-                include_once('DAO/ProduitDAO.php');
-                include_once('DTO/ProduitDTO.php');
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
                 $instanceController->SuprPanier($_GET['id']);
@@ -163,10 +130,6 @@ class SuperController
                 break;
 
             case "deleteAdmin":
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/AdresseDAO.php');
-                include_once('DTO/AdresseDTO.php');
                 include_once('page/Admin/ControllerAdmin.php');
                 $instanceController=new ControllerAdmin();
                 AdresseDAO::deleteAdresseById($_GET['id']);
@@ -175,12 +138,6 @@ class SuperController
                 break;
 
             case "AdminProduit":
-                include_once('DAO/ProduitDAO.php');
-                include_once ('DTO/ProduitDTO.php');
-                include_once('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
                 $instanceController=new ControllerAdmin();
                 if (isset($_SESSION['id'])) {
                     if ($instanceController->isAdmin($_SESSION['id']) == true) {
@@ -195,10 +152,6 @@ class SuperController
                 break;
 
             case "AjouterProduit":
-                include_once('DAO/ProduitDAO.php');
-                include_once ('DTO/ProduitDTO.php');
-                include_once('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminProduit/ControllerAdminProduit.php');
                 if(!empty($_POST['nom']) && !empty($_POST['stock']) && !empty($_POST['prix'])) {
                     $instanceController = new ControllerAdminProduit();
@@ -210,8 +163,6 @@ class SuperController
                 break;
 
             case "supprimerProduit";
-                include_once('DAO/ProduitDAO.php');
-                include_once ('DTO/ProduitDTO.php');
                 include_once ('page/AdminProduit/ControllerAdminProduit.php');
                 $instanceController=new ControllerAdminProduit();
                 ProduitDAO::deletePhoto($_GET['id']);
@@ -220,8 +171,6 @@ class SuperController
                 break;
 
             case "ModifierProduit":
-                include_once('DAO/ProduitDAO.php');
-                include_once ('DTO/ProduitDTO.php');
                 include_once ('page/AdminProduit/ControllerAdminProduit.php');
                 if (isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
                     ProduitDAO::deletePhoto($_GET['id']);
@@ -233,10 +182,6 @@ class SuperController
                 break;
 
             case "profile";
-                include_once('DAO/UserDAO.php');
-                include_once ('DTO/UserDTO.php');
-                include_once('DAO/AdresseDAO.php');
-                include_once('DTO/AdresseDTO.php');
                 include_once ('page/profile/ControllerProfile.php');
                 $instanceController=new ControllerProfile();
                 $instanceController->includeView();
@@ -244,15 +189,11 @@ class SuperController
 
 
             case "AdminCarte":
-                include_once ('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminCarte/AdminCarteController.php');
                 include_once ('page/AdminCarte/AdminCarte.php');
                 break;
 
             case "AddCategorie":
-                include_once ('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminCarte/AdminCarteController.php');
                 if (isset($_POST['nom'])) {
                     CategorieDAO::addCategorie($_POST['nom']);
@@ -261,35 +202,19 @@ class SuperController
                 break;
 
             case "SupCategorie":
-                include_once ('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminCarte/AdminCarteController.php');
                 CategorieDAO::deleteCategorie($_GET['id']);
                 AdminCarteController::redirectUser();
                 break;
 
             case "ModifierCategorie":
-                include_once ('DAO/CategorieDAO.php');
-                include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminCarte/AdminCarteController.php');
                 if (isset($_POST['nom']) && isset($_GET['id'])) {
                     CategorieDAO::modifierCategorie($_POST['nom'], $_GET['id']);
                 }
                 AdminCarteController::redirectUser();
                 break;
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
         }
     }
 }

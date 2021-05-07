@@ -1,4 +1,10 @@
 <?php
+include_once('DAO/UserDAO.php');
+include_once('DTO/UserDTO.php');
+include_once('DAO/CategorieDAO.php');
+include_once('DTO/CategorieDTO.php');
+include_once('DAO/AdresseDAO.php');
+include_once('DTO/AdresseDTO.php');
 
 class ControllerAdmin{
     public static function isAdmin(){

@@ -1,5 +1,6 @@
 <?php
-
+include_once('DTO/UserDTO.php');
+include_once('DAO/UserDAO.php');
 class ControllerInscription
 {
     public static function includeView()

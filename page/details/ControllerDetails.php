@@ -1,5 +1,6 @@
 <?php
-
+include_once('DAO/ProduitDAO.php');
+include_once('DTO/ProduitDTO.php');
 class ControllerDetails
 {
     public static function includeView()

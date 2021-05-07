@@ -1,4 +1,10 @@
 <?php
+include_once('DAO/ProduitDAO.php');
+include_once ('DTO/ProduitDTO.php');
+include_once('DAO/CategorieDAO.php');
+include_once ('DTO/CategorieDTO.php');
+include_once('DAO/UserDAO.php');
+include_once('DTO/UserDTO.php');
  class ControllerAdminProduit{
     public static function testPhoto(){
         if (isset($_POST['submit'])){
