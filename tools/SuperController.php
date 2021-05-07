@@ -219,7 +219,17 @@ class SuperController
                 $instanceController=new ControllerAdminProduit();
                 ProduitDAO::supprimerProduit($_GET['id']);
                 $instanceController->redirectUser();
+                break;
 
+            case "ModifierProduit":
+                include_once('DAO/ProduitDAO.php');
+                include_once ('DTO/ProduitDTO.php');
+                include_once ('page/AdminProduit/ControllerAdminProduit.php');
+                if (isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+                    $instanceController = new ControllerAdminProduit();
+                    ProduitDAO::modifierProduit();
+                    $instanceController->redirectUser();
+                }
 
 
 
