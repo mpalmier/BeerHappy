@@ -269,6 +269,7 @@ class SuperController
                 if (isset($_POST['nom']) && isset($_GET['id'])) {
                     CategorieDAO::modifierCategorie($_POST['nom'], $_GET['id']);
                 }
+                AdminCarteController::redirectUser();
 
 
 
