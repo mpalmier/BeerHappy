@@ -34,7 +34,7 @@
 
 
     public static function publierProduit($photo){
-            if(isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+            if(!empty($_POST['nom']) && !empty($_POST['stock']) && !empty($_POST['prix'])) {
                 $produitDTO = new ProduitDTO();
                 $produitDTO->setNom($_POST['nom']);
                 $produitDTO->setStock($_POST['stock']);

@@ -194,7 +194,7 @@ class SuperController
                 include_once('DAO/CategorieDAO.php');
                 include_once ('DTO/CategorieDTO.php');
                 include_once('page/AdminProduit/ControllerAdminProduit.php');
-                if(isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+                if(!empty($_POST['nom']) && !empty($_POST['stock']) && !empty($_POST['prix'])) {
                     $instanceController = new ControllerAdminProduit();
                     $photo = $instanceController->testPhoto();
                     ProduitDAO::addProduit($instanceController->publierProduit($photo));
@@ -233,6 +233,43 @@ class SuperController
                 $instanceController=new ControllerProfile();
                 $instanceController->includeView();
                 break;
+
+
+            case "AdminCarte":
+                include_once ('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminCarte/AdminCarteController.php');
+                include_once ('page/AdminCarte/AdminCarte.php');
+                break;
+
+            case "AddCategorie":
+                include_once ('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminCarte/AdminCarteController.php');
+                if (isset($_POST['nom'])) {
+                    CategorieDAO::addCategorie($_POST['nom']);
+                    AdminCarteController::redirectUser();
+                }
+                break;
+
+            case "SupCategorie":
+                include_once ('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminCarte/AdminCarteController.php');
+                CategorieDAO::deleteCategorie($_GET['id']);
+                AdminCarteController::redirectUser();
+                break;
+
+            case "ModifierCategorie":
+                include_once ('DAO/CategorieDAO.php');
+                include_once ('DTO/CategorieDTO.php');
+                include_once('page/AdminCarte/AdminCarteController.php');
+                if (isset($_POST['nom']) && isset($_GET['id'])) {
+                    CategorieDAO::modifierCategorie($_POST['nom'], $_GET['id']);
+                }
+
+
+
 
 
 
