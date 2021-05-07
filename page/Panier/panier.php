@@ -36,6 +36,10 @@ foreach ($tab as $item)
 
 echo '<br><br><br>Prix total de vos produits : '.$prix.' €';
 
+foreach ($_SESSION['panier'] as $key => $value) {
+    echo 'Article : ' . $value[0] . ' d\'une quantité : ' . $value[1];
+}
+
 
 
 

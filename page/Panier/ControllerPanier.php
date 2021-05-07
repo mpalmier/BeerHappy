@@ -8,11 +8,6 @@ class ControllerPanier
         include_once('panier.php');
     }
 
-    function launchPanier()
-    {
-        include_once('panierLaunch.php');
-    }
-
     function getPanierVerif()
     {
         if(isset($_GET['id']))
@@ -31,18 +26,9 @@ class ControllerPanier
 
     function addProduct($product_id)
     {
-        $_SESSION['panier'][$product_id] = $product_id;
-        $_SESSION['panier']['qteProduit'] = '1';
-    }
-
-
-    function addQuantite($id) {
-        $_SESSION[$id]['qteProduit']++;
-        header('Location: index.php?page=panier');
-    }
-
-    function suprQuantite() {
-
+        $idProduit = $product_id;
+        $quantite = 1;
+        $_SESSION['Panier'] = [$idProduit, $quantite];
     }
 
     public static function SuprPanier($supr_id)

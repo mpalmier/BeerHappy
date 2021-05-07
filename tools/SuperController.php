@@ -130,7 +130,7 @@ class SuperController
                 include_once('DTO/ProduitDTO.php');
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
-                $instanceController->launchPanier();
+                $instanceController->getPanierVerif();
                 break;
 
             case "panier":
@@ -149,11 +149,6 @@ class SuperController
                 $instanceController->SuprPanier($_GET['id']);
                 break;
 
-            case "addQuantite":
-                include_once('page/Panier/ControllerPanier.php');
-                $instanceController=new ControllerPanier();
-                $instanceController->addQuantite($_GET['id']);
-                break;
 
             case "suprQuantite":
                 include_once('page/Panier/ControllerPanier.php');
@@ -192,10 +187,6 @@ class SuperController
                     header('index.php?page=carte');
                 }
                 break;
-
-
-
-
 
             case "AjouterProduit":
                 include_once('DAO/ProduitDAO.php');
