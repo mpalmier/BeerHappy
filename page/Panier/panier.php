@@ -1,20 +1,11 @@
 <?php
-/*
-echo "Votre panier :";*/
 
-$tab = $_SESSION['panier'];
 $prix = 0;
-$_SESSION['panier']['qteProduit'];
 
-var_dump($_SESSION['panier']);
-echo "<br>";
-var_dump($_SESSION['panier']['qteProduit']);
-
-
-foreach ($tab as $item)
+foreach ($_SESSION['panier'] as $key => $value)
 {
     $produit = new ProduitDTO();
-    $produit =  ProduitDAO::getProduitById($item);
+    $produit =  ProduitDAO::getProduitById($value[0]);
 
     if (isset($produit))
     {
@@ -24,7 +15,7 @@ foreach ($tab as $item)
                 Nom : ' . $pt->getNom() . '<br>
                 Prix : ' . $pt->getPrix() . '<br>
                 Photo : <img src="' . $pt->getPhoto() . '"><br>
-                Quantité : <a href="index.php?page=addQuantite?id='.$pt->getId().'">Plus</a> '.$_SESSION['panier']['qteProduit'][$pt->getId()].'
+                Quantité : <a href="index.php?page=addQuantite?id='.$pt->getId().'">Plus</a> '.$value[1].'
                 <a href="index.php?page=suprQuantite">Moins</a><br>
                 <a href=' . $_SERVER["HTTP_REFERER"] . '>Retour</a>
                 <a href="index.php?page=supprimerPanier&id=' . $pt->getId() . '">Supprimé</a>';
@@ -35,11 +26,6 @@ foreach ($tab as $item)
 }
 
 echo '<br><br><br>Prix total de vos produits : '.$prix.' €';
-
-foreach ($_SESSION['panier'] as $key => $value) {
-    echo 'Article : ' . $value[0] . ' d\'une quantité : ' . $value[1];
-}
-
 
 
 

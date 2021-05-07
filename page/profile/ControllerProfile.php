@@ -9,16 +9,17 @@ class ControllerProfile
 
     public static function afficherProfile()
     {
-        $info=new UserDTO();
-        $info=UserDAO::getUserById($_SESSION['id']);
-        foreach ($info as $if)
-        {
-            echo '<br>',
-                    $if->getPseudo(),
-                    $if->getPassword(),
-                    $if->getEmail();
-
-        }
+        $users = UserDAO::getUser();
+        foreach ($users as $user){
+            echo '<br>'.$user->getEmail().'<br>';
+            echo $user->getPseudo().'<br>';
+            $adresse=AdresseDAO::getAdresseByIdUser($user->getId());
+            if (!empty($adresse)) {
+                echo $adresse->getVille() . '<br>';
+                echo $adresse->getAdresseLigne() . '<br>';
+                echo $adresse->getCodePostal() . '<br>';
+                echo $adresse->getTelephone() . '<br>';
+            }
 
     }
 }
