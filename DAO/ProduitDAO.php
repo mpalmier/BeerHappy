@@ -93,10 +93,16 @@ class ProduitDAO
         $reponse->execute(array($id));
     }
 
-    public static function modifierProduit(){
+    public static function modifierProduit($photo){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("UPDATE produit set nom=?, prix=?, stock=? where id=?");
-        $reponse->execute(array($_POST['nom'],$_POST['prix'],$_POST['stock'],$_GET['id']));
+        $reponse = $bdd->prepare("UPDATE produit set nom=?, prix=?, stock=?,photo=? where id=?");
+        $reponse->execute(array($_POST['nom'],$_POST['prix'],$_POST['stock'],$photo,$_GET['id']));
+    }
+
+    public static function deletePhoto($id){
+        $produit=ProduitDAO::getProduitById($id);
+        $produitObjet=$produit[0];
+        unlink($produitObjet->getPhoto());
     }
 
 }

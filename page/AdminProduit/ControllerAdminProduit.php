@@ -67,7 +67,7 @@
             echo "<p> Image du produit : </p><input type='file' name='upload_file'>";
 
             echo "Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'>";
-            echo "Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' value='Modifier'></form>";
+            echo "Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' name='submit' value='Modifier'></form>";
             echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" ;
 
         }

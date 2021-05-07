@@ -208,6 +208,7 @@ class SuperController
                 include_once ('DTO/ProduitDTO.php');
                 include_once ('page/AdminProduit/ControllerAdminProduit.php');
                 $instanceController=new ControllerAdminProduit();
+                ProduitDAO::deletePhoto($_GET['id']);
                 ProduitDAO::supprimerProduit($_GET['id']);
                 $instanceController->redirectUser();
                 break;
@@ -217,11 +218,13 @@ class SuperController
                 include_once ('DTO/ProduitDTO.php');
                 include_once ('page/AdminProduit/ControllerAdminProduit.php');
                 if (isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
+                    ProduitDAO::deletePhoto($_GET['id']);
                     $instanceController = new ControllerAdminProduit();
                     $photo=$instanceController->testPhoto();
-                    ProduitDAO::modifierProduit();
+                    ProduitDAO::modifierProduit($photo);
                     $instanceController->redirectUser();
                 }
+                break;
 
             case "profile";
                 include_once('DAO/UserDAO.php');
