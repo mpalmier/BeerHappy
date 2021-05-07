@@ -33,13 +33,17 @@ class ControllerProfile
                 echo $adresse->getCodePostal() . '<br>';
                 echo $adresse->getTelephone() . '<br>';
             } else {
-                echo '<br>'."<form method=post action='index.php?page=newAdresse=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
-                <input type='text' name='pseudo'>" . '<br>' . "<input type='text' name='pseudo'>" . "<input type='submit' name='submit' value='Modifier'></form>";
+                echo '<br>'."<form method=post action='index.php?page=newAdresse=" . $_SESSION['id'] . "' enctype='multipart/form-data' >".
+                "Ville :"."<input type='text' name='ville'>" . '<br>'.
+                "Adresse :"."<input type='text' name='adresseLigne'>" . '<br>'.
+                "Code Postal :"."<input type='text' name='postal'>" . '<br>'.
+                "Téléphone :"."<input type='text' name='tel'>" . '<br>'.
+                "<input type='submit' name='submit' value='Modifier'></form>";
 
         }
     }
 }
     public static function redirectUser(){
-        header("location:index.php?page=profile");
+        header("Location:index.php?page=profile");
     }
 }
