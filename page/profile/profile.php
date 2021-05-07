@@ -1,6 +1,6 @@
 <?php
 
-echo $_GET['id'];
+echo $_SESSION['id'];
 echo '<a href="index.php?page=carte">Retour</a>';
 
-ControllerProduit::afficherProfile();
+ControllerProfile::afficherProfile();
