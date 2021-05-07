@@ -14,8 +14,8 @@ class ControllerProfile
         foreach ($info as $if)
         {
             echo '<br>',
-                    $if->getPseudo();
-                    $if->getPassword();
+                    $if->getPseudo(),
+                    $if->getPassword(),
                     $if->getEmail();
 
         }
