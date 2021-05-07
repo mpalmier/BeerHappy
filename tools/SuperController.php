@@ -218,6 +218,7 @@ class SuperController
                 include_once ('page/AdminProduit/ControllerAdminProduit.php');
                 if (isset($_POST['nom']) && isset($_POST['stock']) && isset($_POST['prix'])) {
                     $instanceController = new ControllerAdminProduit();
+                    $photo=$instanceController->testPhoto();
                     ProduitDAO::modifierProduit();
                     $instanceController->redirectUser();
                 }
@@ -225,7 +226,7 @@ class SuperController
             case "profile";
                 include_once('DAO/UserDAO.php');
                 include_once ('DTO/UserDTO.php');
-                include_once ('page/produits/ControllerProduit.php');
+                include_once ('page/profile/ControllerProfile.php');
                 $instanceController=new ControllerProfile();
                 $instanceController->includeView();
                 break;

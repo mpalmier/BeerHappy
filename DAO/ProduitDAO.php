@@ -95,8 +95,8 @@ class ProduitDAO
 
     public static function modifierProduit(){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("UPDATE produit set nom=? prix=? stock=? where id=?");
-        $reponse->execute(array($_POST['nom'],$_POST['prix'],$_POST['stock']),);
+        $reponse = $bdd->prepare("UPDATE produit set nom=?, prix=?, stock=? where id=?");
+        $reponse->execute(array($_POST['nom'],$_POST['prix'],$_POST['stock'],$_GET['id']));
     }
 
 }

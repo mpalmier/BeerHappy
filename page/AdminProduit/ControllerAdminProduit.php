@@ -59,9 +59,13 @@
     public static function afficherListeProduits()
     {
         $produit = ProduitDAO::getProduit();
+
         if (!empty($produit)) {
+            echo "<h1>Modifier le produit</h1>".'<br>';
         foreach ($produit as $produits) {
-            echo "Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit'> <input type='text' name='nom'>";
+            echo "Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit&id=" . $produits->getId() . "' enctype='multipart/form-data' > <input type='text' name='nom'>";
+            echo "<p> Image du produit : </p><input type='file' name='upload_file'>";
+
             echo "Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'>";
             echo "Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' value='Modifier'></form>";
             echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" ;
