@@ -59,6 +59,27 @@ class UserDAO
         }
     }
 
+    public static function getUserById($id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("SELECT * from user where pseudo=?");
+        $reponse->execute(array($id));
+        $user = $reponse->fetchAll();
+        if (empty($user[0])){
+            return null;
+        }
+        else{
+            $luser=$user[0];
+            $userDTO = new UserDTO();
+            $userDTO->setId($luser[0]);
+            $userDTO->setEmail($luser[1]);
+            $userDTO->setPseudo($luser[2]);
+            $userDTO->setPassword($luser[3]);
+            $userDTO->setArgent($luser[4]);
+            $userDTO->setAdmin($luser[5]);
+            return $userDTO;
+        }
+    }
+
     public static function getAdminByIdUser($idUser){
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("SELECT admin from user where id=?");

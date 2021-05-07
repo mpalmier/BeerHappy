@@ -10,12 +10,13 @@ class ControllerProfile
     public static function afficherProfile()
     {
         $info=new UserDTO();
-        $info=UserDAO::getProduitByCategorie($_GET['id']);
+        $info=UserDAO::getUserById($_SESSION['id']);
         foreach ($info as $if)
         {
-            echo '<br>
-                <a href="index.php?page=details&id='.$if->getId().'">'.$if->getNom().'</a>
-                <img src="'.$if->getPhoto().'">';
+            echo '<br>',
+                    $if->getPseudo();
+                    $if->getPassword();
+                    $if->getEmail();
 
         }
 

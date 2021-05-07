@@ -222,6 +222,14 @@ class SuperController
                     $instanceController->redirectUser();
                 }
 
+            case "profile";
+                include_once('DAO/UserDAO.php');
+                include_once ('DTO/UserDTO.php');
+                include_once ('page/produits/ControllerProduit.php');
+                $instanceController=new ControllerProfile();
+                $instanceController->includeView();
+                break;
+
 
 
 
