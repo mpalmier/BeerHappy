@@ -41,13 +41,10 @@
             {
                 if (isset($_SESSION['panier']))
                 {
-                    echo "<li><a href='index.php?page=panier'>Panier : ".count($_SESSION['panier'])."</a></li>";
-                    /*
                     foreach ($_SESSION['panier'] as $key => $value)
                     {
-                        echo " Prix total : ".$value[2]." €";
+                        echo "<li><a href='index.php?page=panier'>Panier : $value[1] </a></li>";
                     }
-                    */
                 }
             }
             ?>

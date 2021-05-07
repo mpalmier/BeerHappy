@@ -39,9 +39,7 @@ class ControllerPanier
         }
 
         $quantite = 1;
-        $prix = 0;
-
-        $_SESSION['panier'][] =[$product_id, $quantite, $prix];
+        $_SESSION['panier'][] =[$product_id, $quantite];
     }
 
     public static function SuprPanier($supr_id)

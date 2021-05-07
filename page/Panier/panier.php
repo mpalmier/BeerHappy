@@ -22,8 +22,6 @@ foreach ($_SESSION['panier'] as $key => $value)
                 <a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a>';
                 $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
                 $prix += $prix1;
-                $value[2] = $prix;
-                $_SESSION['panier'][$key] = [$value[0], $value[1], $value[2]];
         }
     }
 }
