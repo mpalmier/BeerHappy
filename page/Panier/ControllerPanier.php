@@ -27,8 +27,21 @@ class ControllerPanier
 
     function addProduct($product_id)
     {
+        foreach ($_SESSION['panier'] as $key => $value)
+        {
+            if ($value[0] == $product_id)
+            {
+                $value[1]++;
+                $_SESSION['panier'][$key] =[$product_id, $value[1]];
+                header('Location: '.$_SERVER["HTTP_REFERER"].'');
+                die("Produit bien ajouté a l'autre");
+            }
+        }
+
         $quantite = 1;
-        $_SESSION['panier'][] =[$product_id, $quantite];
+        $prix = 0;
+
+        $_SESSION['panier'][] =[$product_id, $quantite, $prix];
     }
 
     public static function SuprPanier($supr_id)
@@ -49,6 +62,8 @@ class ControllerPanier
 
     public static function suprQuantite($supr_id)
     {
+        $product_id = 1;
+
         if(isset($supr_id))
         {
             foreach ($_SESSION['panier'] as $key => $value)
@@ -61,6 +76,7 @@ class ControllerPanier
                     }
                     else {
                         $value[1]--;
+                        $_SESSION['panier'][$key] =[$product_id, $value[1]];
                     }
 
                     header('Location: index.php?page=panier');
@@ -72,6 +88,7 @@ class ControllerPanier
 
     public static function addQuantite($supr_id)
     {
+        $product_id = 1;
         if(isset($supr_id))
         {
             foreach ($_SESSION['panier'] as $key => $value)
@@ -79,6 +96,7 @@ class ControllerPanier
                 if ($key == $supr_id)
                 {
                     $value[1]++;
+                    $_SESSION['panier'][$key] =[$product_id, $value[1]];
                     header('Location: index.php?page=panier');
                 }
             }
