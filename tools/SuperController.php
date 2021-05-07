@@ -270,6 +270,7 @@ class SuperController
                     CategorieDAO::modifierCategorie($_POST['nom'], $_GET['id']);
                 }
                 AdminCarteController::redirectUser();
+                break;
 
 
 
