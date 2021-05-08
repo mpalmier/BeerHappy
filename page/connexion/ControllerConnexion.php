@@ -16,9 +16,6 @@ class ControllerConnexion {
 
         if ($Users != null)
         {
-
-            session_name("prestachopebdd4" );
-
             $_SESSION['id']=$Users->getId();
             $_SESSION['panier'] = array();
             return $auth;

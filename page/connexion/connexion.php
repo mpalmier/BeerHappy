@@ -24,7 +24,7 @@
                 <input type="submit" value="CONNEXION">
             </div>
         </form>
-        <p class="text--center">Vous n'êtes pas membre ? <a href="index.php?page=inscription">Inscrivez-vous !</a> <svg class="icon">
+        <p class="text--center">Vous n'êtes pas membre ? <a id="underline_co_ins" href="index.php?page=inscription">Inscrivez-vous !</a> <svg class="icon">
                 <use xlink:href="#icon-arrow-right"></use>
             </svg>
         </p>

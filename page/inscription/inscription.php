@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="assets/css/style_connexion-inscription.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style_inscription.css">
 </head>
 <body class="align">
 <div class="grid">
@@ -37,7 +36,7 @@
             <input type="submit" value="INSCRIPTION">
         </div>
     </form>
-    <p class="text--center">Vous êtes déjà membre ? <a href="index.php?page=connexion">Connectez-vous !</a> <svg class="icon">
+    <p class="text--center">Vous êtes déjà membre ? <a id="underline_co_ins" href="index.php?page=connexion">Connectez-vous !</a> <svg class="icon">
             <use xlink:href="#icon-arrow-right"></use>
         </svg>
     </p>

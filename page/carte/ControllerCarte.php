@@ -16,7 +16,7 @@ class ControllerCarte
         $categorie=CategorieDAO::getCategorie();
         foreach ($categorie as $cat)
         {
-            echo '<br><a href="index.php?page=produit&id='.$cat->getId().'">'.$cat->getNom()."</a>";
+            echo '<div class="content"><h1><a href="index.php?page=produit&id='.$cat->getId().'">'.$cat->getNom()."</a></h1></div>";
         }
 
     }

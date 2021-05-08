@@ -8,8 +8,6 @@
 
 .align {
     display: grid;
-    place-items: center;
-    margin-top: -101px;
 }
 
 /* helpers/grid.css */
@@ -96,9 +94,7 @@ a {
     outline: 0;
     text-decoration: none;
 }
-
-a:focus,
-a:hover {
+#underline_co_ins:focus,#underline_co_ins:hover {
     text-decoration: underline;
 }
 

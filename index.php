@@ -8,15 +8,21 @@
 
 <?php
 
-include_once("tools/SuperController.php");
+    if (empty($_SESSION))
+    {
+        session_name("prestachopebdd4" );
+        session_start();
+    }
 
-$page = "interdit";
+    include_once("tools/SuperController.php");
 
-if(!empty($_GET['page'])) {
-    $page = $_GET['page'];
-}
+    $page = "interdit";
 
-SuperController::callPage($page);
+    if(!empty($_GET['page'])) {
+        $page = $_GET['page'];
+    }
+
+    SuperController::callPage($page);
 
 ?>
 
