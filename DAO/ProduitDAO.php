@@ -105,4 +105,32 @@ class ProduitDAO
         unlink($produitObjet->getPhoto());
     }
 
+    public static function BarRechercheProduct($value_recherche)
+    {
+        $bdd = DatabaseLinker::getConnexion();
+        $product = $bdd->prepare('SELECT nom FROM produit');
+        if(isset($_POST['q']) AND !empty($_POST['q'])) {
+            $value_recherche = htmlspecialchars($_POST['q']);
+            $product = $bdd->prepare('SELECT nom FROM produit WHERE nom LIKE :recherche');
+            $recherche = '%'.$value_recherche.'%';
+            $product->bindParam(':recherche', $recherche);
+            $product->execute();
+            $products = $product->fetchAll();
+            $tab = array();
+            if (empty($products[0])){
+                return null;
+            }
+            else{
+                $lproduit=$products[0];
+                $produitDTO = new ProduitDTO();
+                $produitDTO->setId($lproduit[0]);
+                $produitDTO->setNom($lproduit[1]);
+                $produitDTO->setPrix($lproduit[2]);
+                $produitDTO->setStock($lproduit[3]);
+                $produitDTO->setPhoto($lproduit[4]);
+                $tab[] = $produitDTO;
+            }
+            return $tab;
+        }
+
 }

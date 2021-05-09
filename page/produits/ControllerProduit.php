@@ -14,13 +14,35 @@ class ControllerProduit
         $produit=ProduitDAO::getProduitByCategorie($_GET['id']);
         foreach ($produit as $pt)
         {
-            echo '<br>
-                <a href="index.php?page=details&id='.$pt->getId().'">'.$pt->getNom().'</a>
-                <img src="'.$pt->getPhoto().'">';
+
+            echo '
+               
+                <div id="make-3D-space">
+                    <div id="product-card">
+                        <div id="product-front">
+                            <div class="shadow"></div>
+                            <img id="img" src="'.$pt->getPhoto().'" alt="Image de '.$pt->getNom().'" />
+                            <div class="image_overlay"></div>
+                            <a href="index.php?page=details&id='.$pt->getId().'">
+                                <div id="view_details">View details</div>
+                            </a>
+                            <div class="stats">
+                                <div class="stats-container">
+                                    <span class="product_price">'.$pt->getPrix().' €</span>
+                                    <span class="product_name">'.$pt->getNom().'</span>
+                                    <p>Petite Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                ';
 
         }
 
     }
+
 }
 
 

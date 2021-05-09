@@ -23,17 +23,6 @@
                 UNE HISTOIRE DE FAMILLE DEPUIS DÉJÀ
                 4 GÉNÉRATIONS
                 En 1873, un jeune entrepreneur du nom de Gerard Adriaan Heineken se prend de passion pour la fabrication de la bière. Il achète alors une brasserie dans ce qui est aujourd'hui le centre d'Amsterdam et crée la recette si reconnaissable de la bière Heineken. C'est le début d'une saga familiale unique, dans laquelle chaque génération a joué son rôle. Découvrez l'histoire Heineken à travers ceux qui la portent depuis plus d'un siècle.</p>
-            <?php
-
-            echo 'test';
-
-            echo $_SESSION['panier'];
-            echo $_SESSION['id'];
-
-            var_dump($_SESSION['panier']);
-            var_dump($_SESSION['id']);
-
-            ?>
         </div>
     </div>
 </body>
