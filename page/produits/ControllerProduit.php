@@ -16,9 +16,8 @@ class ControllerProduit
         {
 
             echo '
-               
                 <div id="make-3D-space">
-                    <div id="product-card">
+                    <div class="product-card">
                         <div id="product-front">
                             <div class="shadow"></div>
                             <img id="img" src="'.$pt->getPhoto().'" alt="Image de '.$pt->getNom().'" />
@@ -36,7 +35,6 @@ class ControllerProduit
                         </div>
                     </div>
                 </div>
-                
                 ';
 
         }
