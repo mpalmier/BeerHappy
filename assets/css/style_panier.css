@@ -129,5 +129,18 @@ td {
 }
 
 .prix {
+    margin-top: 50px;
     justify-content: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+.borderFoot {
+    border: none;
+    padding-bottom: 15px;
+    font-family: Product;
+}
+
+.img img {
+    width: 180px;
 }

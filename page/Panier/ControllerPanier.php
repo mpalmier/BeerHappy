@@ -122,7 +122,7 @@ class ControllerPanier
                 {
                     echo '
                     <tr>
-                        <td><img src="'.$pt->getPhoto().'"></td>
+                        <td><div class="img"><img src="'.$pt->getPhoto().'"></div></td>
                         <td>'.$pt->getNom().'</td>
                         <td>'.$pt->getPrix().' €</td>
                         <td><a href="index.php?page=suprQuantite&id='.$key.'&idp='.$pt->getId().'">-</a>'.$value[1].'<a href="index.php?page=addQuantite&id='.$key.'&idp='.$pt->getId().'">+</a></td>
@@ -134,7 +134,15 @@ class ControllerPanier
             }
         }
 
-        echo "</table></div><div class='prix'>Prix total de vos produits : ".$prix." €</div>";
+        echo "</div>
+        <tfoot>
+        <td class='borderFoot'></td>
+        <td class='borderFoot'></td>
+        <td class='borderFoot'></td>
+        <td class='borderFoot'></td>
+        <td class='borderFoot'><div class='prix'>Prix Total  : ".$prix." €</div></td>
+        </tfoot>
+        </table>";
     }
 
 }
