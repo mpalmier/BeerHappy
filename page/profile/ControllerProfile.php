@@ -22,7 +22,7 @@ class ControllerProfile
             <input type='email' name='email'>"."<input type='submit' name='submit' value='Modifier'></form>";
 
             echo "Mot de passe"."<form method=post action='index.php?page=ModifierMdp&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
-            <input type='password' name='password'>".'<br>'."<input type='password' name='pseudo'>"."<input type='submit' name='submit' value='Modifier'></form>";
+            <input type='password' name='password1'>".'<br>'."<input type='password2' name='pseudo'>"."<input type='submit' name='submit' value='Modifier'></form>";
 
 
             $adresse = AdresseDAO::getAdresseByIdUser($user->getId());
@@ -33,9 +33,11 @@ class ControllerProfile
                 echo $adresse->getCodePostal() . '<br>';
                 echo $adresse->getTelephone() . '<br>';
             } else {
-                echo '<br>'."<form method=post action='index.php?page=newAdresse=" . $_SESSION['id'] . "' enctype='multipart/form-data' >".
+                echo '<br>'."<form method=post action='index.php?page=newAdresse' enctype='multipart/form-data' >".
+                "nom :"."<input type='text' name='nom'>" . '<br>'.
+                "prenom :"."<input type='text' name='prenom'>" . '<br>'.
                 "Ville :"."<input type='text' name='ville'>" . '<br>'.
-                "Adresse :"."<input type='text' name='adresseLigne'>" . '<br>'.
+                "Adresse :"."<input type='text' name='adresse_ligne'>" . '<br>'.
                 "Code Postal :"."<input type='text' name='postal'>" . '<br>'.
                 "Téléphone :"."<input type='text' name='tel'>" . '<br>'.
                 "<input type='submit' name='submit' value='Modifier'></form>";

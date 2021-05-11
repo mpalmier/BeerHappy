@@ -230,6 +230,15 @@ class SuperController
                 }
                 ControllerProfile::redirectUser();
                 break;
+
+            case "newAdresse":
+                include_once('DTO/AdresseDTO.phpDTO.php');
+                include_once('DAO/AdresseDAO.phpDAO.php');
+                if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_ligne']) && isset($_POST['ville']) && isset($_POST['postal']) && isset($_POST['tel'])) {
+                    AdresseDAO::insertAdresseById($_POST['nom'], $_POST['prenom'], $_POST['adresse_ligne'], $_POST['ville'], $_POST['postal'], $_POST['tel'], $_SESSION['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
         }
     }
 }
