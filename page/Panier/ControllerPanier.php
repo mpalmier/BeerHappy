@@ -37,7 +37,6 @@ class ControllerPanier
                 die("Produit bien ajouté a l'autre");
             }
         }
-
         $quantite = 1;
         $_SESSION['panier'][] =[$product_id, $quantite];
     }
@@ -58,19 +57,17 @@ class ControllerPanier
 
     }
 
-    public static function suprQuantite($supr_id)
+    public static function suprQuantite($add_id,$product_id)
     {
-        $product_id = 1;
-
-        if(isset($supr_id))
+        if(isset($add_id))
         {
             foreach ($_SESSION['panier'] as $key => $value)
             {
-                if ($key == $supr_id)
+                if ($key == $add_id)
                 {
                     if ($value[1] == 1)
                     {
-                        ControllerPanier::SuprPanier($supr_id);
+                        ControllerPanier::SuprPanier($add_id);
                     }
                     else {
                         $value[1]--;
@@ -84,9 +81,8 @@ class ControllerPanier
 
     }
 
-    public static function addQuantite($supr_id)
+    public static function addQuantite($supr_id,$product_id)
     {
-        $product_id = 1;
         if(isset($supr_id))
         {
             foreach ($_SESSION['panier'] as $key => $value)
@@ -108,6 +104,37 @@ class ControllerPanier
             $prix *= $qte;
         }
         return $prix;
+    }
+
+    public static function afficherPanier()
+    {
+        $prix = 0;
+        $prix1 = 0;
+
+        foreach ($_SESSION['panier'] as $key => $value)
+        {
+            $produit = new ProduitDTO();
+            $produit =  ProduitDAO::getProduitById($value[0]);
+
+            if (isset($produit))
+            {
+                foreach ($produit as $pt)
+                {
+                    echo '
+                    <tr>
+                        <td><img src="'.$pt->getPhoto().'"></td>
+                        <td>'.$pt->getNom().'</td>
+                        <td>'.$pt->getPrix().' €</td>
+                        <td><a href="index.php?page=suprQuantite&id='.$key.'&idp='.$pt->getId().'">-</a>'.$value[1].'<a href="index.php?page=addQuantite&id='.$key.'&idp='.$pt->getId().'">+</a></td>
+                        <td><a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a></td>
+                    </tr>';
+                    $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
+                    $prix += $prix1;
+                }
+            }
+        }
+
+        echo "</table></div><div class='prix'>Prix total de vos produits : ".$prix." €</div>";
     }
 
 }

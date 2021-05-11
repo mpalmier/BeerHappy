@@ -10,53 +10,26 @@
 <body>
 <div class="content-area">
     <div class="wrapper">
+        <table>
+            <tr>
+                <th><span class="photo">Photo</span></th>
+                <th><span class="name">Nom du produit</span></th>
+                <th><span class="price">Prix</span></th>
+                <th><span class="quantity">Quantité</span></th>
+                <th><span class="action">Action</span></th>
+            </tr>
 
-        <?php
+            <?php
 
-            $prix = 0;
-            $prix1 = 0;
+            ControllerPanier::afficherPanier();
 
-            foreach ($_SESSION['panier'] as $key => $value)
-            {
-                $produit = new ProduitDTO();
-                $produit =  ProduitDAO::getProduitById($value[0]);
+            ?>
 
-                if (isset($produit))
-                {
-                    foreach ($produit as $pt)
-                    {
-                        echo '<br>
-                            Nom : ' . $pt->getNom() . '<br>
-                            Prix : ' . $pt->getPrix() . '<br>
-                            Photo : <img src="' . $pt->getPhoto() . '"><br>
-                            Quantité :  <a href="index.php?page=suprQuantite&id='.$key.'">
-                            <button class="icon-btn add-btn">
-                                <div class="btn-txt">Moins</div>
-                            </button>
-                            <div></a>'.$value[1].'
-                            <a href="index.php?page=addQuantite&id='.$key.'">
-                            
-                            <button class="icon-btn add-btn">
-                                <div class="add-icon"></div>
-                                <div class="btn-txt">Plus</div>
-                            </button></a>
-                            
-                            <br>
-                            
-                            <a href=' . $_SERVER["HTTP_REFERER"] . '>Retour</a>
-                            <a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a>';
 
-                            $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
-                            $prix += $prix1;
-                    }
-                }
-            }
 
-            echo '<br><br><br>Prix total de vos produits : '.$prix.' €';
-
-        ?>
-    </div>
+    <a href="<?php $_SERVER["HTTP_REFERER"] ?>">Retour</a>
 </div>
+
 </body></html>
 
 

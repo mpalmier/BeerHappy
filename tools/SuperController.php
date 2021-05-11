@@ -118,13 +118,13 @@ class SuperController
             case "suprQuantite":
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
-                $instanceController->suprQuantite($_GET['id']);
+                $instanceController->suprQuantite($_GET['id'],$_GET['idp']);
                 break;
 
             case "addQuantite":
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
-                $instanceController->addQuantite($_GET['id']);
+                $instanceController->addQuantite($_GET['id'],$_GET['idp']);
                 break;
 
             case "deleteAdmin":
