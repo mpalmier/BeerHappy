@@ -21,4 +21,27 @@
 .wrapper {
     width: 1170px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.categorie {
+    padding-top: 45px;
+    font-size: 45px;
+    font-family: "Categorie";
+    text-decoration: underline;
+}
+
+@font-face {
+    font-family: "Product";
+    src: url("../fonts/Itim-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Categorie";
+    src: url("../fonts/ATypewriterForMe.ttf");
+}
+
+
+

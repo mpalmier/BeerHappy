@@ -52,10 +52,11 @@ nav a {
 }
 .banner-area h2 {
     padding-top: 8%;
-    font-size: 70px;
+    font-size: 40px;
     font-family: poppins;
     text-transform: uppercase;
     color: #fff;
+    font-family: Categorie;
 }
 
 img {

@@ -5,6 +5,7 @@
     <title>Fixed Header with html and css | Collapsing Header Tutorial</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style_css_commun.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_panier.css">
 </head>
 <body>
 <div class="content-area">
@@ -28,10 +29,23 @@
                             Nom : ' . $pt->getNom() . '<br>
                             Prix : ' . $pt->getPrix() . '<br>
                             Photo : <img src="' . $pt->getPhoto() . '"><br>
-                            Quantité :  <a href="index.php?page=suprQuantite&id='.$key.'">Moins</a>'.$value[1].'
-                            <a href="index.php?page=addQuantite&id='.$key.'">Plus</a><br>
+                            Quantité :  <a href="index.php?page=suprQuantite&id='.$key.'">
+                            <button class="icon-btn add-btn">
+                                <div class="btn-txt">Moins</div>
+                            </button>
+                            <div></a>'.$value[1].'
+                            <a href="index.php?page=addQuantite&id='.$key.'">
+                            
+                            <button class="icon-btn add-btn">
+                                <div class="add-icon"></div>
+                                <div class="btn-txt">Plus</div>
+                            </button></a>
+                            
+                            <br>
+                            
                             <a href=' . $_SERVER["HTTP_REFERER"] . '>Retour</a>
                             <a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a>';
+
                             $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
                             $prix += $prix1;
                     }
@@ -44,6 +58,9 @@
     </div>
 </div>
 </body></html>
+
+
+
 
 
 

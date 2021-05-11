@@ -12,9 +12,14 @@
 </head>
 <body>
     <div class="content-area">
+        <div class="categorie">
+            <?php
+
+            ControllerProduit::afficherNameCategorie();
+
+            ?>
+        </div>
         <div class="wrapper">
-
-
             <?php
 
             ControllerProduit::afficherCategorie();

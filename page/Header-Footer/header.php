@@ -11,7 +11,7 @@
     <header>
         <div class="wrapper">
             <div class="logo">
-                <a href="#">BeerHappy</a>
+                <a href="#">Prestachope</a>
             </div>
             <nav>
                 <a href="index.php?page=accueil">Accueil</a>
@@ -68,7 +68,7 @@
         {
             echo '
             <div class="banner-area">
-                <h2>PrestaChope</h2>
+                <h2>" Une histoire de famille depuis déjà 4 générations "</h2>
             </div>';
         }
 
