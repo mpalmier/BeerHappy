@@ -246,5 +246,15 @@ class SuperController
                 ControllerProfile::redirectUser();
                 break;
         }
+
+        if (isset($_GET['page']))
+        {
+            if (isset($_GET['page']) || $_GET['page']=="interdit")
+            {
+                include_once("page/Header-Footer/footer.php");
+            }
+        }
+
     }
+
 }
