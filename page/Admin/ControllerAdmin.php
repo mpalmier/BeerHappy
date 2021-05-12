@@ -38,16 +38,18 @@ class ControllerAdmin{
         $adresse=new AdresseDTO();
 
         foreach ($users as $user){
-            echo '<br>'.$user->getEmail().'<br>';
-            echo $user->getPseudo().'<br>';
+            echo '<tr><td>'.$user->getPseudo().'</td>';
+            echo '<td>'.$user->getEmail().'</td>';
             $adresse=AdresseDAO::getAdresseByIdUser($user->getId());
             if (!empty($adresse)) {
-                echo $adresse->getVille() . '<br>';
-                echo $adresse->getAdresseLigne() . '<br>';
-                echo $adresse->getCodePostal() . '<br>';
-                echo $adresse->getTelephone() . '<br>';
+                echo '<td>'.$adresse->getPrenom().'</td>';
+                echo '<td>'.$adresse->getNom().'</td>';
+                echo '<td>'.$adresse->getVille().'</td>';
+                echo '<td>'.$adresse->getAdresseLigne().'</td>';
+                echo '<td>'.$adresse->getCodePostal().'</td>';
+                echo '<td>'.$adresse->getTelephone().'</td>';
             }
-            echo '<a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a><br>';
+            echo '<td><a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a></td></tr>';
 
         }
     }

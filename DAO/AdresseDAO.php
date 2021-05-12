@@ -6,7 +6,6 @@ class AdresseDAO
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("SELECT * from adresse where id_user=?");
         $reponse->execute(array($id));
-
         $adresses = $reponse->fetchAll();
         if (empty($adresses[0])) {
             return null;

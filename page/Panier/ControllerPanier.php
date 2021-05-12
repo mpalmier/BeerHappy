@@ -57,6 +57,15 @@ class ControllerPanier
 
     }
 
+    public static function supprimerPanierAll()
+    {
+        foreach ($_SESSION['panier'] as $key => $value)
+        {
+            unset($_SESSION['panier'][$key]);
+        }
+        header('Location: index.php?page=panier');
+    }
+
     public static function suprQuantite($add_id,$product_id)
     {
         if(isset($add_id))
@@ -111,38 +120,48 @@ class ControllerPanier
         $prix = 0;
         $prix1 = 0;
 
-        foreach ($_SESSION['panier'] as $key => $value)
-        {
-            $produit = new ProduitDTO();
-            $produit =  ProduitDAO::getProduitById($value[0]);
+        if(!empty($_SESSION['panier'])) {
+            foreach ($_SESSION['panier'] as $key => $value) {
+                $produit = new ProduitDTO();
+                $produit = ProduitDAO::getProduitById($value[0]);
 
-            if (isset($produit))
-            {
-                foreach ($produit as $pt)
-                {
-                    echo '
-                    <tr>
-                        <td><div class="img"><img src="'.$pt->getPhoto().'"></div></td>
-                        <td>'.$pt->getNom().'</td>
-                        <td>'.$pt->getPrix().' €</td>
-                        <td><a href="index.php?page=suprQuantite&id='.$key.'&idp='.$pt->getId().'">-</a>'.$value[1].'<a href="index.php?page=addQuantite&id='.$key.'&idp='.$pt->getId().'">+</a></td>
-                        <td><a href="index.php?page=supprimerPanier&id='.$key.'">Supprimer</a></td>
-                    </tr>';
-                    $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(),$value[1]);
-                    $prix += $prix1;
+                if (isset($produit)) {
+                    foreach ($produit as $pt) {
+                        echo '
+                        <tr>
+                            <td><div class="img"><img src="' . $pt->getPhoto() . '"></div></td>
+                            <td>' . $pt->getNom() . '</td>
+                            <td>' . $pt->getPrix() . ' €</td>
+                            <td><a href="index.php?page=suprQuantite&id=' . $key . '&idp=' . $pt->getId() . '">-</a>' . $value[1] . '<a href="index.php?page=addQuantite&id=' . $key . '&idp=' . $pt->getId() . '">+</a></td>
+                            <td><a href="index.php?page=supprimerPanier&id=' . $key . '">Supprimer</a></td>
+                        </tr>';
+                        $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(), $value[1]);
+                        $prix += $prix1;
+                    }
                 }
             }
-        }
 
-        echo "</div>
-        <tfoot>
-        <td class='borderFoot'></td>
-        <td class='borderFoot'></td>
-        <td class='borderFoot'></td>
-        <td class='borderFoot'></td>
-        <td class='borderFoot'><div class='prix'>Prix Total  : ".$prix." €</div></td>
-        </tfoot>
-        </table>";
+            echo "</div>
+            <tfoot>
+            <td class='borderFoot'><a href='index.php?page=supprimerPanierAll'>Supprimer tout le panier</a></td>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'><div class='prix'>Prix Total  : " . $prix . " €</div></td>
+            </tfoot>
+            </table>";
+        }
+        else {
+            echo "</div>
+            <tfoot>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'>Votre panier est vide</td>
+            <td class='borderFoot'></td>
+            <td class='borderFoot'></td>
+            </tfoot>
+            </table>";
+        }
     }
 
 }

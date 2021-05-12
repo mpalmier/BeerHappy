@@ -2,9 +2,54 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
-DROP DATABASE IF EXISTS Prestachopebdd4;
-CREATE DATABASE Prestachopebdd4;
-USE Prestachopebdd4;
+DROP DATABASE IF EXISTS prestachopebdd4;
+CREATE DATABASE prestachopebdd4;
+USE prestachopebdd4;
+
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
+
+CREATE TABLE user(
+        id       Int  Auto_increment  NOT NULL ,
+        email    Varchar (50) NOT NULL ,
+        pseudo   Varchar (50) NOT NULL ,
+        password Varchar (50) NOT NULL ,
+        argent   Float NOT NULL ,
+        admin    Int NOT NULL
+	,CONSTRAINT user_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: message
+#------------------------------------------------------------
+
+CREATE TABLE message(
+        id      Int  Auto_increment  NOT NULL ,
+        titre   Varchar (30) NOT NULL ,
+        contenu Text NOT NULL ,
+        date    Date NOT NULL ,
+        id_user Int NOT NULL
+	,CONSTRAINT message_PK PRIMARY KEY (id)
+
+	,CONSTRAINT message_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: facture
+#------------------------------------------------------------
+
+CREATE TABLE facture(
+        id      Int  Auto_increment  NOT NULL ,
+        prix    Float NOT NULL ,
+        id_user Int NOT NULL
+	,CONSTRAINT facture_PK PRIMARY KEY (id)
+
+	,CONSTRAINT facture_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
 
 #------------------------------------------------------------
 # Table: categorie
@@ -45,56 +90,11 @@ CREATE TABLE adresse(
         adresse_ligne Varchar (50) NOT NULL ,
         ville         Varchar (50) NOT NULL ,
         code_postal   Int NOT NULL ,
-        telephone     Int NOT NULL
+        telephone     Int NOT NULL ,
+        id_user       Int NOT NULL
 	,CONSTRAINT adresse_PK PRIMARY KEY (id)
-)ENGINE=InnoDB;
 
-
-#------------------------------------------------------------
-# Table: user
-#------------------------------------------------------------
-
-CREATE TABLE user(
-        id         Int  Auto_increment  NOT NULL ,
-        email      Varchar (50) NOT NULL ,
-        pseudo     Varchar (50) NOT NULL ,
-        password   Varchar (50) NOT NULL ,
-        argent     Float NOT NULL ,
-        admin      Int NOT NULL ,
-        id_adresse Int NOT NULL
-	,CONSTRAINT user_PK PRIMARY KEY (id)
-
-	,CONSTRAINT user_adresse_FK FOREIGN KEY (id_adresse) REFERENCES adresse(id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: message
-#------------------------------------------------------------
-
-CREATE TABLE message(
-        id      Int  Auto_increment  NOT NULL ,
-        titre   Varchar (30) NOT NULL ,
-        contenu Text NOT NULL ,
-        date    Date NOT NULL ,
-        id_user Int NOT NULL
-	,CONSTRAINT message_PK PRIMARY KEY (id)
-
-	,CONSTRAINT message_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: facture
-#------------------------------------------------------------
-
-CREATE TABLE facture(
-        id      Int  Auto_increment  NOT NULL ,
-        prix    Float NOT NULL ,
-        id_user Int NOT NULL
-	,CONSTRAINT facture_PK PRIMARY KEY (id)
-
-	,CONSTRAINT facture_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+	,CONSTRAINT adresse_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 

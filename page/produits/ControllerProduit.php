@@ -12,9 +12,11 @@ class ControllerProduit
     {
         $produit=new ProduitDTO();
         $produit=ProduitDAO::getProduitByCategorie($_GET['id']);
-        foreach ($produit as $pt)
+        if (!empty($produit))
         {
-            echo '
+            foreach ($produit as $pt)
+            {
+                echo '
                 <div id="make-3D-space">
                     <div class="product-card">
                         <div id="product-front">
@@ -39,6 +41,7 @@ class ControllerProduit
                         </div>
                     </div>
                 </div>';
+            }
         }
     }
 

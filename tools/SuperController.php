@@ -108,6 +108,12 @@ class SuperController
                 $instanceController->includeView();
                 break;
 
+            case "supprimerPanierAll":
+                include_once('page/Panier/ControllerPanier.php');
+                $instanceController=new ControllerPanier();
+                $instanceController->supprimerPanierAll();
+                break;
+
             case "supprimerPanier":
                 include_once('page/Panier/ControllerPanier.php');
                 $instanceController=new ControllerPanier();
