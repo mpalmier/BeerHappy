@@ -137,6 +137,7 @@ class ControllerPanier
                         </tr>';
                         $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(), $value[1]);
                         $prix += $prix1;
+                        $_SESSION['prix'] = $prix;
                     }
                 }
             }
@@ -147,7 +148,7 @@ class ControllerPanier
             <td class='borderFoot'></td>
             <td class='borderFoot'></td>
             <td class='borderFoot'></td>
-            <td class='borderFoot'><div class='prix'>Prix Total  : " . $prix . " €</div></td>
+            <td class='borderFoot'><div class='prix'>Prix Total  : " . $_SESSION['prix'] . " €</div></td>
             </tfoot>
             </table>";
         }
@@ -162,6 +163,8 @@ class ControllerPanier
             </tfoot>
             </table>";
         }
+
+
     }
 
 }

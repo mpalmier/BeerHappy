@@ -133,4 +133,78 @@ class ProduitDAO
         }
     }
 
+    public static function getNbrElement($idCategorie)
+    {
+        // Récupérer le nombre d'enregistrements
+        $bdd = DatabaseLinker::getConnexion();
+        $count = $bdd->prepare('SELECT COUNT(id) AS cpt from produit WHERE id_categorie = ?');
+        $count->setFetchMode(PDO::FETCH_ASSOC);
+        $count->execute(array($idCategorie));
+        $tcount=$count->fetchAll();
+        return $tcount;
+    }
+
+    public static function getElementByPage($idCategorie,$debut,$nbr_elements_par_page) {
+        //Récupérer les enregistrements eux-mêmes
+        $bdd = DatabaseLinker::getConnexion();
+        $sel=$bdd->query('SELECT id FROM produit WHERE id_categorie = '.$idCategorie.' ORDER BY nom LIMIT '.$debut.','.$nbr_elements_par_page);
+        $sel->setFetchMode(PDO::FETCH_ASSOC);
+        $tab=$sel->fetchAll();
+
+        foreach ($tab as $t)
+        {
+            $id =  $t['id'].'<br>';
+            ControllerProduit::afficherCategorie($id);
+        }
+    }
+
+    public static function getNbrElementAdmin()
+    {
+        // Récupérer le nombre d'enregistrements
+        $bdd = DatabaseLinker::getConnexion();
+        $count = $bdd->prepare('SELECT COUNT(id) AS cpt from produit');
+        $count->setFetchMode(PDO::FETCH_ASSOC);
+        $count->execute();
+        $tcount=$count->fetchAll();
+        return $tcount;
+    }
+
+    public static function getElementByPageAdmin($debut,$nbr_elements_par_page) {
+        //Récupérer les enregistrements eux-mêmes
+        $bdd = DatabaseLinker::getConnexion();
+        $sel=$bdd->query('SELECT id FROM produit ORDER BY nom LIMIT '.$debut.','.$nbr_elements_par_page);
+        $sel->setFetchMode(PDO::FETCH_ASSOC);
+        $tab=$sel->fetchAll();
+
+        foreach ($tab as $t)
+        {
+            $id =  $t['id'];
+            ControllerAdminProduit::afficherListeProduits($id);
+        }
+    }
+
+    public static function SuprStockByQte($stockValue,$id_product) {
+        $bdd = DatabaseLinker::getConnexion();
+        $updateStock = $bdd->prepare('UPDATE produit SET stock=? WHERE id=?');
+        $updateStock->execute(array($stockValue,$id_product));
+    }
+
+    public static function updatePrixUser($argent,$id_user) {
+        $bdd = DatabaseLinker::getConnexion();
+        $updateStock = $bdd->prepare('UPDATE user SET argent=? WHERE id=?');
+        $updateStock->execute(array($argent,$id_user));
+    }
+
+    public static function setContenir($product_id,$id_facture,$quantite) {
+        $bdd = DatabaseLinker::getConnexion();
+        $updateStock = $bdd->prepare('INSERT INTO contenir (id, id_facture, quantite) VALUES (?, ?, ?);');
+        $updateStock->execute(array($product_id,$id_facture,$quantite));
+    }
+
+    public static function setFacture($prix,$id_user) {
+        $bdd = DatabaseLinker::getConnexion();
+        $updateStock = $bdd->prepare('INSERT INTO facture (prix, id_user) VALUES (?, ?);');
+        $updateStock->execute(array($prix,$id_user));
+    }
+
 }

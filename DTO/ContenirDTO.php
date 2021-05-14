@@ -1,7 +1,7 @@
 <?php
-class FactureDTO{
+class ContenirDTO{
     private $id;
-    private $prix;
+    private $quantite;
 
     /**
      * @return mixed
@@ -22,17 +22,17 @@ class FactureDTO{
     /**
      * @return mixed
      */
-    public function getPrix()
+    public function getQuantite()
     {
-        return $this->prix;
+        return $this->quantite;
     }
 
     /**
-     * @param mixed $prix
+     * @param mixed $quantite
      */
-    public function setPrix($prix): void
+    public function setQuantite($quantite): void
     {
-        $this->prix = $prix;
+        $this->quantite = $quantite;
     }
 
 

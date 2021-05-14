@@ -62,20 +62,19 @@ include_once('DTO/UserDTO.php');
 
     }
 
-    public static function afficherListeProduits()
+    public static function afficherListeProduits($id)
     {
-        $produit = ProduitDAO::getProduit();
+        $produit = ProduitDAO::getProduitById($id);
 
         if (!empty($produit)) {
-            echo "<h1>Modifier le produit</h1>".'<br>';
         foreach ($produit as $produits) {
-            echo "Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit&id=" . $produits->getId() . "' enctype='multipart/form-data' > <input type='text' name='nom'>";
-            echo "<p> Image du produit : </p><input type='file' name='upload_file'>";
-
-            echo "Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'>";
-            echo "Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' name='submit' value='Modifier'></form>";
-            echo "<a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a>" ;
-
+            echo "<tr>";
+            echo "<td>Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit&id=" . $produits->getId() . "' enctype='multipart/form-data' > <input type='text' name='nom'></td>";
+            echo "<td>Image du produit : </p><input type='file' name='upload_file'></td>";
+            echo "<td>Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'></td>";
+            echo "<td>Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' name='submit' value='Modifier'></form></td>";
+            echo "<td><a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a></td>" ;
+            echo "</tr>";
         }
     }
 
@@ -84,9 +83,4 @@ include_once('DTO/UserDTO.php');
     public static function redirectUser(){
             header("location:index.php?page=AdminProduit");
     }
-
-
-
-
-
 }

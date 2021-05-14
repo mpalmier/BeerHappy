@@ -8,10 +8,9 @@ class ControllerProduit
         include_once("produit.php");
     }
 
-    public static function afficherCategorie()
+    public static function afficherCategorie($id)
     {
-        $produit=new ProduitDTO();
-        $produit=ProduitDAO::getProduitByCategorie($_GET['id']);
+        $produit=ProduitDAO::getProduitById($id);
         if (!empty($produit))
         {
             foreach ($produit as $pt)
@@ -54,5 +53,6 @@ class ControllerProduit
             echo $ct->getNom();
         }
     }
+
 }
 ?>

@@ -13,12 +13,10 @@
             <div class="bg bg2"></div>
             <div class="bg bg3"></div>
             <?php  ControllerCarte::afficherCategorie(); ?>
-        </div>
-    </div>
+
 </body>
+</html>
 
-
-<?php
 
 
 

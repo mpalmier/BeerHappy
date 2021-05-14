@@ -61,9 +61,10 @@ class UserDAO
 
     public static function getUserById($id){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from user where pseudo=?");
+        $reponse = $bdd->prepare("SELECT * from user where id=?");
         $reponse->execute(array($id));
         $user = $reponse->fetchAll();
+        $tab = array();
         if (empty($user[0])){
             return null;
         }
@@ -76,7 +77,9 @@ class UserDAO
             $userDTO->setPassword($luser[3]);
             $userDTO->setArgent($luser[4]);
             $userDTO->setAdmin($luser[5]);
-            return $userDTO;
+            $tab[] = $userDTO;
+
+            return $tab;
         }
     }
 
@@ -121,6 +124,31 @@ class UserDAO
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("UPDATE user SET password=? where id=?");
         $reponse->execute(array(sha1($mdp),$id));
+
+    }
+
+    public static function getNbrUserAdmin() {
+        // Récupérer le nombre d'enregistrements
+        $bdd = DatabaseLinker::getConnexion();
+        $count = $bdd->prepare('SELECT COUNT(id) AS cpt from user');
+        $count->setFetchMode(PDO::FETCH_ASSOC);
+        $count->execute();
+        $tcount=$count->fetchAll();
+        return $tcount;
+    }
+
+    public static function getUserByPageAdmin($debut, $nbr_elements_par_page) {
+        //Récupérer les enregistrements eux-mêmes
+        $bdd = DatabaseLinker::getConnexion();
+        $sel=$bdd->query('SELECT id FROM user ORDER BY pseudo LIMIT '.$debut.','.$nbr_elements_par_page);
+        $sel->setFetchMode(PDO::FETCH_ASSOC);
+        $tab=$sel->fetchAll();
+
+        foreach ($tab as $t)
+        {
+            $id =  $t['id'];
+            ControllerAdmin::afficherUser($id);
+        }
 
     }
 }

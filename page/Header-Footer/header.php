@@ -30,7 +30,7 @@
                 {
                     if (ControllerAdmin::isAdmin($_SESSION['id']) == true)
                     {
-                        echo "<a href='index.php?page=admin'>Admin</a>";
+                        echo "<a href='index.php?page=admin&pages=1'>Admin</a>";
                     }
                 }
 

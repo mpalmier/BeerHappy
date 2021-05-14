@@ -56,13 +56,14 @@ td {
     border: thin solid #6495ed;
     text-align: center;
     background-color: #ffffff;
+    padding: 10px;
 }
 
 .userListe {
     margin-top: 125px;
 }
 
-.addCategorie {
+.addCategorie, .addProduct {
     background: rgba(255,255,255,0.8);
     margin-top: 75px;
     border: 2px gray solid;
@@ -163,7 +164,7 @@ a {
     outline: none;
 }
 
-.addCategorie h1, #addButton {
+.addCategorie h1, .addProduct h1, #addButton {
     font-family: Categorie;
 }
 
@@ -182,4 +183,22 @@ input#addButton[type="submit"]:hover {
     color: white;
     transition-duration: 1s;
 }
+
+.noBorderAdminUser {
+    border: none;
+    border-bottom: thin solid #6495ed;
+
+}
+
+.block {
+    background: rgba(255,255,255,0.8);
+    margin-top: 75px;
+    border: 2px gray solid;
+    border-radius: 20px;
+    padding: 20px 250px 20px 250px;
+    font-size: 25px;
+    margin-bottom: -60px;
+}
+
+
 

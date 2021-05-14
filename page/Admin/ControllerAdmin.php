@@ -5,6 +5,11 @@ include_once('DAO/CategorieDAO.php');
 include_once('DTO/CategorieDTO.php');
 include_once('DAO/AdresseDAO.php');
 include_once('DTO/AdresseDTO.php');
+include_once('DTO/FactureDTO.php');
+include_once('DAO/FactureDAO.php');
+include_once('DTO/ContenirDTO.php');
+include_once('DAO/ContenirDAO.php');
+
 
 class ControllerAdmin{
     public static function isAdmin(){
@@ -32,9 +37,9 @@ class ControllerAdmin{
         }
     }
 
-    public static function afficherUser(){
+    public static function afficherUser($id){
         $users=new UserDTO();
-        $users=UserDAO::getUser();
+        $users=UserDAO::getUserById($id);
         $adresse=new AdresseDTO();
 
         foreach ($users as $user){
@@ -49,12 +54,30 @@ class ControllerAdmin{
                 echo '<td>'.$adresse->getCodePostal().'</td>';
                 echo '<td>'.$adresse->getTelephone().'</td>';
             }
+            else {
+                echo '<td class="noBorderAdminUser"></td>';
+                echo '<td class="noBorderAdminUser"></td>';
+                echo '<td class="noBorderAdminUser">Aucune</td>';
+                echo '<td class="noBorderAdminUser">adresse</td>';
+                echo '<td class="noBorderAdminUser">enregistré</td>';
+                echo '<td class="noBorderAdminUser"></td>';
+            }
             echo '<td><a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a></td></tr>';
 
         }
     }
 
-    public static function redirectUser(){
+    public static function redirectUser() {
         header("location:index.php?page=admin");
     }
+
+    public static function getTresorie() {
+        $value = 0;
+        $tresorie = FactureDAO::getFacture();
+        foreach ($tresorie as $tre) {
+            $value += $tre->getPrix();
+        }
+        echo $value;
+    }
+
 }

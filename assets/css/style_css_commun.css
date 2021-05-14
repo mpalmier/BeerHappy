@@ -3,8 +3,13 @@
     position: relative;
     top: 450px;
     background: #ebebeb;
-    height: 1500px;
+    height: 2600px;
 }
+
+#adminAll {
+    height: 1600px;
+}
+
 .content-area h2 {
     font-family: poppins;
     letter-spacing: 4px;
@@ -41,6 +46,10 @@
 @font-face {
     font-family: "Categorie";
     src: url("../fonts/ATypewriterForMe.ttf");
+}
+
+.pages {
+    font-size: 100px;
 }
 
 

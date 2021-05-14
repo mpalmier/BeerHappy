@@ -7,12 +7,15 @@ class SuperController
         include_once('tools/DatabaseLinker.php');
         if (isset($_GET['page']))
         {
-            if (isset($_GET['page']) || $_GET['page']=="interdit")
+            if ($_GET['page']!="interdit")
             {
-                include_once('DAO/UserDAO.php');
-                include_once('DTO/UserDTO.php');
-                include_once('page/Admin/ControllerAdmin.php');
-                include_once("page/Header-Footer/header.php");
+                if ($_GET['page']!="finishCommande") {
+                    include_once('DAO/UserDAO.php');
+                    include_once('DTO/UserDTO.php');
+                    include_once('page/Admin/ControllerAdmin.php');
+                    include_once("page/Header-Footer/header.php");
+                }
+
             }
         }
 
@@ -40,6 +43,18 @@ class SuperController
                 include_once('page/details/ControllerDetails.php');
                 $instanceController = new ControllerDetails();
                 $instanceController->includeView();
+                break;
+
+            case "commande":
+                include_once('page/Commande/ControllerCommande.php');
+                $instanceController = new ControllerCommande();
+                $instanceController->includeView();
+                break;
+
+            case "finishCommande":
+                include_once('page/Commande/ControllerCommande.php');
+                $instanceController = new ControllerCommande();
+                $instanceController->getCommandeFinish();
                 break;
 
             case "carte" :
@@ -249,9 +264,19 @@ class SuperController
 
         if (isset($_GET['page']))
         {
-            if (isset($_GET['page']) || $_GET['page']=="interdit")
+            if ($_GET['page']!="interdit")
             {
-                include_once("page/Header-Footer/footer.php");
+                if ($_GET['page']!="connexion")
+                {
+                    if ($_GET['page']!="inscription")
+                    {
+                        if ($_GET['page']!="finishCommande") {
+                            include_once("page/Header-Footer/footer.php");
+
+                        }
+
+                    }
+                }
             }
         }
 

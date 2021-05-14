@@ -15,19 +15,49 @@
         <div class="categorie">
             <?php
 
+            $value = ProduitDAO::getNbrElement($_GET['id']);
+            foreach ($value as $v) {
+                $nbr =  $v['cpt'];
+            }
+
+            // Pagination
+
+            @$pages=$_GET["pages"];
+            if (empty($pages)) {
+                $pages=1;
+            }
+            $nbr_elements_par_page = 9;
+            $nbr_de_pages = ceil($nbr/$nbr_elements_par_page);
+            $debut=($pages-1)*$nbr_elements_par_page;
+
+
             ControllerProduit::afficherNameCategorie();
 
             ?>
         </div>
+        <?php
+
+        //Parcourir les différentes pages
+        echo '<div class="pages">';
+        for($i=1;$i<=$nbr_de_pages;$i++)
+        {
+            if($pages != $i)
+            {
+                echo "<a href='?pages=$i&page=".$_GET['page']."&id=".$_GET['id']."'>$i</a>";
+            }
+            else {
+                echo "<a>$i</a>";
+            }
+        }
+        echo '</div>';
+
+        ?>
         <div class="wrapper">
             <?php
-
-            ControllerProduit::afficherCategorie();
-
+            ProduitDAO::getElementByPage($_GET['id'],$debut,$nbr_elements_par_page);
             ?>
 
-        </div>
-    </div>
+
 </body>
 </html>
 

@@ -28,7 +28,13 @@
 
 
     <a href="<?php $_SERVER["HTTP_REFERER"] ?>">Retour</a>
-</div>
+
+    <?php
+
+    echo '<a href="index.php?page=commande">Commander</a>';
+
+    ?>
+
 
 </body></html>
 
