@@ -19,7 +19,6 @@
     ControllerProfile::afficherProfile();
 
     ?>
-    </div>
-</div>
+ 
 </body>
 </html>
