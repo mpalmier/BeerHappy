@@ -221,6 +221,12 @@ class SuperController
                 }
                 break;
 
+            case "AdminContact":
+                include_once('page/AdminContact/ControllerAdminContact.php');
+                $instanceController=new ControllerAdminContact();
+                $instanceController->includeView();
+                break;
+
             case "SupCategorie":
                 include_once('page/AdminCarte/AdminCarteController.php');
                 CategorieDAO::deleteCategorie($_GET['id']);
