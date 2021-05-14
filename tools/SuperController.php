@@ -202,6 +202,7 @@ class SuperController
 
             case "profile";
                 include_once ('page/profile/ControllerProfile.php');
+                include_once ('page/profile/profile.php');
                 $instanceController=new ControllerProfile();
                 $instanceController->includeView();
                 break;
@@ -253,13 +254,27 @@ class SuperController
                 break;
 
             case "newAdresse":
+                echo'on est bien arriver';
                 include_once('DTO/AdresseDTO.phpDTO.php');
                 include_once('DAO/AdresseDAO.phpDAO.php');
                 if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_ligne']) && isset($_POST['ville']) && isset($_POST['postal']) && isset($_POST['tel'])) {
+                    echo('champ rempli');
                     AdresseDAO::insertAdresseById($_POST['nom'], $_POST['prenom'], $_POST['adresse_ligne'], $_POST['ville'], $_POST['postal'], $_POST['tel'], $_SESSION['id']);
+                    echo 'inseré';
                 }
+
                 ControllerProfile::redirectUser();
+                echo 'rediriger';
                 break;
+
+
+            case "contact" :
+                include_once('page/contact/ControllerContact.php.php');
+                include_once("page/contact/Contact.php");
+                $instanceController = new ControllerContact();
+                $instanceController::insertView();
+                break;
+
         }
 
         if (isset($_GET['page']))

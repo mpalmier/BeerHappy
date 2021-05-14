@@ -3,8 +3,12 @@ include_once('DAO/UserDAO.php');
 include_once ('DTO/UserDTO.php');
 include_once('DAO/AdresseDAO.php');
 include_once('DTO/AdresseDTO.php');
+
+echo 'test';
 class ControllerProfile
 {
+
+
     public static function includeView()
     {
         include_once("profile.php");
