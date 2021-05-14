@@ -5,10 +5,11 @@ include_once('DAO/CategorieDAO.php');
 include_once('DTO/CategorieDTO.php');
 include_once('DAO/AdresseDAO.php');
 include_once('DTO/AdresseDTO.php');
-include_once('DTO/FactureDTO.php');
 include_once('DAO/FactureDAO.php');
-include_once('DTO/ContenirDTO.php');
+include_once('DTO/FactureDTO.php');
 include_once('DAO/ContenirDAO.php');
+include_once('DTO/ContenirDTO.php');
+
 
 
 class ControllerAdmin{
@@ -74,9 +75,14 @@ class ControllerAdmin{
     public static function getTresorie() {
         $value = 0;
         $tresorie = FactureDAO::getFacture();
+
         foreach ($tresorie as $tre) {
-            $value += $tre->getPrix();
+            $contenir = ContenirDAO::getContenirByIdFacture($tre->getId());
+            foreach ($contenir as $ctn) {
+                $value += $tre->getPrix()*$ctn->getQuantite();
+            }
         }
+
         echo $value;
     }
 

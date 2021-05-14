@@ -179,6 +179,19 @@
     font-family: "Product";
 }
 
+.buttonAddProductNon {
+    margin-top: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ed3330;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    font-family: "Product";
+}
+
 .buttonAddProduct:hover {
     margin-top: 10px;
     background: #434343;

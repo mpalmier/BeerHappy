@@ -136,11 +136,12 @@ class ControllerPanier
                             <td><a href="index.php?page=supprimerPanier&id=' . $key . '">Supprimer</a></td>
                         </tr>';
                         $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(), $value[1]);
-                        $prix += $prix1;
-                        $_SESSION['prix'] = $prix;
                     }
                 }
             }
+
+            $prix += $prix1;
+            $_SESSION['prix'] = $prix;
 
             echo "</div>
             <tfoot>

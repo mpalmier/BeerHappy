@@ -1,6 +1,7 @@
 <?php
 class ContenirDTO{
     private $id;
+    private $idFacture;
     private $quantite;
 
     /**
@@ -22,6 +23,22 @@ class ContenirDTO{
     /**
      * @return mixed
      */
+    public function getIdFacture()
+    {
+        return $this->idFacture;
+    }
+
+    /**
+     * @param mixed $idFacture
+     */
+    public function setIdFacture($idFacture): void
+    {
+        $this->idFacture = $idFacture;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getQuantite()
     {
         return $this->quantite;
@@ -34,6 +51,8 @@ class ContenirDTO{
     {
         $this->quantite = $quantite;
     }
+
+
 
 
 
