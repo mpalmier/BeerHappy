@@ -4,7 +4,6 @@ include_once ('DTO/UserDTO.php');
 include_once('DAO/AdresseDAO.php');
 include_once('DTO/AdresseDTO.php');
 
-echo 'test';
 class ControllerProfile
 {
 
@@ -16,7 +15,7 @@ class ControllerProfile
 
     public static function afficherProfile()
     {
-        $users = UserDAO::getUser();
+        $users = UserDAO::getUserById($_SESSION['id']);
         foreach ($users as $user){
             echo $user->getPseudo()."<form method=post action='index.php?page=ModifierPseudo&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
             <input type='text' name='pseudo'>"."<input type='submit' name='submit' value='Modifier'></form>";

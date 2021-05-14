@@ -242,8 +242,7 @@ class SuperController
                 break;
 
             case "ModifierPseudo":
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/UserDAO.php');
+                include_once('page/profile/ControllerProfile.php');
                 if (isset($_POST['pseudo']) && isset($_GET['id'])) {
                     UserDAO::UpdatePseudoById($_POST['pseudo'], $_GET['id']);
                 }
@@ -251,8 +250,7 @@ class SuperController
                 break;
 
             case "ModifierMail":
-                include_once('DTO/UserDTO.php');
-                include_once('DAO/UserDAO.php');
+                include_once('page/profile/ControllerProfile.php');
                 if (isset($_POST['email']) && isset($_GET['id'])) {
                     UserDAO::UpdateEmailById($_POST['email'], $_GET['id']);
                 }
@@ -260,17 +258,11 @@ class SuperController
                 break;
 
             case "newAdresse":
-                echo'on est bien arriver';
-                include_once('DTO/AdresseDTO.phpDTO.php');
-                include_once('DAO/AdresseDAO.phpDAO.php');
+                include_once('page/profile/ControllerProfile.php');
                 if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_ligne']) && isset($_POST['ville']) && isset($_POST['postal']) && isset($_POST['tel'])) {
-                    echo('champ rempli');
                     AdresseDAO::insertAdresseById($_POST['nom'], $_POST['prenom'], $_POST['adresse_ligne'], $_POST['ville'], $_POST['postal'], $_POST['tel'], $_SESSION['id']);
-                    echo 'inseré';
                 }
-
                 ControllerProfile::redirectUser();
-                echo 'rediriger';
                 break;
 
 

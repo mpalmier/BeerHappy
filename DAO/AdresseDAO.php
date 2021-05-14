@@ -33,11 +33,8 @@ class AdresseDAO
 
     public static function insertAdresseById($nom, $prenom, $adresse_ligne, $ville, $code_postal, $tel, $id_user)
     {
-        echo'debut<br>';
         $bdd = DatabaseLinker::getConnexion();
-        echo'conecté <br>';
-        $reponse = $bdd->prepare("INSERT INTO adresse(nom,prenom,adresse_ligne,ville,code_postal,telephone,id_user) VALUES ('?','?','?','?','?','?','?')");
+        $reponse = $bdd->prepare("INSERT INTO adresse(nom,prenom,adresse_ligne,ville,code_postal,telephone,id_user) VALUES (?,?,?,?,?,?,?)");
         $reponse->execute(array($nom, $prenom, $adresse_ligne, $ville, $code_postal, $tel, $id_user));
-        echo('fin de la requete <br>');
     }
 }
