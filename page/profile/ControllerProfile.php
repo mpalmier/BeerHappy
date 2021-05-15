@@ -25,16 +25,26 @@ class ControllerProfile
             <input type='email' name='email'>"."<input type='submit' name='submit' value='Modifier'></form>";
 
             echo "Mot de passe"."<form method=post action='index.php?page=ModifierMdp&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
-            <input type='password' name='password1'>".'<br>'."<input type='password2' name='pseudo'>"."<input type='submit' name='submit' value='Modifier'></form>";
+            <input type='password' name='password1'>".'<br>'."<input type='password' name='password2'>"."<input type='submit' name='submit' value='Modifier'></form>";
 
 
             $adresse = AdresseDAO::getAdresseByIdUser($user->getId());
 
             if (!empty($adresse)) {
-                echo $adresse->getVille() . '<br>';
-                echo $adresse->getAdresseLigne() . '<br>';
-                echo $adresse->getCodePostal() . '<br>';
-                echo $adresse->getTelephone() . '<br>';
+
+                echo $adresse->getVille() ."<form method=post action='index.php?page=ModifierVille&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
+            <input type='text' name='ville'>"."<input type='submit' name='submit' value='Modifier'></form>";
+
+                echo $adresse->getAdresseLigne() . "<form method=post action='index.php?page=ModifierAdresse&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
+            <input type='text' name='adresse'>"."<input type='submit' name='submit' value='Modifier'></form>";
+
+                echo $adresse->getCodePostal() . "<form method=post action='index.php?page=ModifierCode&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
+            <input type='text' name='code'>"."<input type='submit' name='submit' value='Modifier'></form>";
+
+                echo '0'.$adresse->getTelephone() . "<form method=post action='index.php?page=ModifierTel&id=" . $_SESSION['id'] . "' enctype='multipart/form-data' >
+            <input type='text' name='tel'>"."<input type='submit' name='submit' value='Modifier'></form>";
+
+
             } else {
                 echo '<br>'."<form method=post action='index.php?page=newAdresse' enctype='multipart/form-data' >".
                 "nom :"."<input type='text' name='nom'>" . '<br>'.

@@ -37,4 +37,42 @@ class AdresseDAO
         $reponse = $bdd->prepare("INSERT INTO adresse(nom,prenom,adresse_ligne,ville,code_postal,telephone,id_user) VALUES (?,?,?,?,?,?,?)");
         $reponse->execute(array($nom, $prenom, $adresse_ligne, $ville, $code_postal, $tel, $id_user));
     }
+
+    public static function UpdateNomById($nom,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET nom=? where id_user=?");
+        $reponse->execute(array($nom,$id));
+
+    }
+
+    public static function UpdatePrenomById($prenom,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET prenom=? where id_user=?");
+        $reponse->execute(array($prenom,$id));
+
+    }
+    public static function UpdateAdresseById($adresse_ligne,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET adresse_ligne=? where id_user=?");
+        $reponse->execute(array($adresse_ligne,$id));
+
+    }
+    public static function UpdateVilleById($ville,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET ville=? where id_user=?");
+        $reponse->execute(array($ville,$id));
+
+    }
+    public static function UpdateCodeById($code,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET code_postal=? where id_user=?");
+        $reponse->execute(array($code,$id));
+
+    }
+    public static function UpdateTelById($code,$id){
+        $bdd = DatabaseLinker::getConnexion();
+        $reponse = $bdd->prepare("UPDATE adresse SET telephone=? where id_user=?");
+        $reponse->execute(array($code,$id));
+
+    }
 }

@@ -257,6 +257,59 @@ class SuperController
                 ControllerProfile::redirectUser();
                 break;
 
+            case "ModifierMdp":
+                include_once('page/profile/ControllerProfile.php');
+                if (isset($_POST['password1']) && isset($_GET['password2'])) {
+                    if ($_POST['password1'] == $_POST['password2']){
+                        UserDAO::UpdateMdpById($_POST['password1'], $_GET['id']);
+                    }
+                    else{
+                        //ControllerProfile::redirectUser();
+                        echo 'Les deux mots de passes ne sont pas identiques';
+                    }
+                }
+                else{
+                    //ControllerProfile::redirectUser();
+                    echo 'Un champs est vide'.'<br>';
+                    echo'champ 1'. $_POST['password1'].'<br>';
+                    echo'champ 2'. $_POST['password2'].'<br>';
+                }
+                //ControllerProfile::redirectUser();
+                //echo 'Votre mot de passe à bien été changé';
+                break;
+
+            case "ModifierVille":
+                include_once('page/profile/ControllerProfile.php');
+                if (isset($_POST['ville']) && isset($_GET['id'])) {
+                    AdresseDAO::UpdateVilleById($_POST['ville'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
+
+            case "ModifierAdresse":
+                include_once('page/profile/ControllerProfile.php');
+                if (isset($_POST['adresse']) && isset($_GET['id'])) {
+                    AdresseDAO::UpdateAdresseById($_POST['adresse'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
+
+            case "ModifierCode":
+                include_once('page/profile/ControllerProfile.php');
+                if (isset($_POST['code']) && isset($_GET['id'])) {
+                    AdresseDAO::UpdateCodeById($_POST['code'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
+
+            case "ModifierTel":
+                include_once('page/profile/ControllerProfile.php');
+                if (isset($_POST['tel']) && isset($_GET['id'])) {
+                    AdresseDAO::UpdateTelById($_POST['tel'], $_GET['id']);
+                }
+                ControllerProfile::redirectUser();
+                break;
+
             case "newAdresse":
                 include_once('page/profile/ControllerProfile.php');
                 if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse_ligne']) && isset($_POST['ville']) && isset($_POST['postal']) && isset($_POST['tel'])) {
