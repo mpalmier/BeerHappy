@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="content-area" id="adminAll">
+    <?php  ControllerAdminContact::insertCommentaire()?>
     <div class="wrapper">
 
        

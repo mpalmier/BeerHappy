@@ -273,6 +273,8 @@ class SuperController
                 $instanceController::insertView();
                 break;
 
+
+
         }
 
         if (isset($_GET['page']))

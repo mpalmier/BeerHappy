@@ -1,6 +1,6 @@
 <?php
 class MessageDAO{
-    public static function getcommentaire(){
+    public static function getMessage(){
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("SELECT * from message");
         $reponse->execute();
@@ -13,10 +13,11 @@ class MessageDAO{
         else{
             foreach ($message as $mes) {
                 $messageDTO = new MessageDTO();
-                $messageDTO->setIdUser($mes[0]);
-                $messageDTO->setPseudo($mes[1]);
-                $messageDTO->setContent($mes[2]);
-                $messageDTO->setDate($mes[3]);
+                $messageDTO->setId($mes[0]);
+                $messageDTO->setEmail($mes[1]);
+                $messageDTO->setTitre($mes[2]);
+                $messageDTO->setContenu($mes[3]);
+                $messageDTO->setDate($mes[4]);
                 $tab[]=$messageDTO;
             }
 
