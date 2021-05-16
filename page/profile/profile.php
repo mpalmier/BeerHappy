@@ -25,6 +25,9 @@
                         elseif ($_GET['r'] == 2) {
                             echo 'Mot de passe incorect';
                         }
+                        elseif ($_GET['r'] == 3) {
+                            echo 'Vous n\'avez pas remplit';
+                        }
                     }
                 }
 

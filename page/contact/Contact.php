@@ -11,7 +11,7 @@
 <div class="content-area">
     <div class="wrapper">
         <div class="form_contact">
-            <h2>Formulaire de contact</h2>
+            <p>Formulaire de contact</p>
             <form method="post" action="">
                 <input type="text" name="titre" placeholder="Titre message">
                 <textarea name="message" placeholder="Votre message"></textarea>
@@ -19,13 +19,26 @@
 
                 if (isset($_SESSION['id']))
                 {
-                    echo '<input id="launch" type="submit" value="Envoyer">';
+                    echo '<div class="launch"><input type="submit" value="Envoyer"></div>';
                 }
                 else {
                     echo '<p>Connectez vous pour envoyer un message</p>';
                 }
                 ?>
             </form>
+
+            <?php
+
+            if (isset($_GET['r'])) {
+                if (isset($_GET['r'])) {
+                    if ($_GET['r'] == 1) {
+                        echo '<div class="error">Vous n\'avez pas remplit toute les cases</div>';
+                    }
+                }
+            }
+
+            ?>
+
         </div>
 
         <?php

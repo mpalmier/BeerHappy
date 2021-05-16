@@ -36,7 +36,7 @@
 }
 
 table {
-    border: medium solid #6495ed;
+    border: medium solid #000000;
     border-collapse: collapse;
     font-size: 20px;
     padding: 50px;
@@ -44,7 +44,7 @@ table {
 
 th {
     font-family: monospace;
-    border: thin solid #6495ed;
+    border: thin solid #000000;
     background-color: #D0E3FA;
     padding-right: 60px;
     padding-left: 60px;
@@ -52,7 +52,7 @@ th {
 
 td {
     font-family: sans-serif;
-    border: thin solid #6495ed;
+    border: thin solid #000000;
     text-align: center;
     background-color: #ffffff;
     padding: 10px;
@@ -185,7 +185,7 @@ input#addButton[type="submit"]:hover {
 
 .noBorderAdminUser {
     border: none;
-    border-bottom: thin solid #6495ed;
+    border-bottom: thin solid #000000;
 
 }
 
@@ -270,6 +270,41 @@ input.input_modif[type="submit"]:hover {
 
 .mail {
     text-align: right;
+}
+
+input {
+    font-family: Categorie;
+    text-align: center;
+    border-radius: 5px;
+    border: 1.5px #434a52 solid;
+}
+
+input::placeholder {
+    color: black;
+    font-size: 15px;
+}
+
+input.envoyer {
+    background: #d7e1e8;
+    color: black;
+    transition-duration: 0.5s;
+    padding: 10px;
+}
+
+select {
+    border-radius: 10px;
+    outline: none;
+}
+
+input.envoyer[type="submit"]:hover {
+    background: #2c3338;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+form p {
+    font-size: 25px;
+    font-family: Categorie;
 }
 
 

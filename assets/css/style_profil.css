@@ -6,6 +6,12 @@
     font-size: 25px;
     margin-bottom: -60px;
     padding: 20px;
+    font-family: Categorie;
+}
+
+.block_profil p {
+    font-family: Categorie;
+    text-decoration: underline;
 }
 
 .block_profiluser {
@@ -24,4 +30,33 @@
     border-radius: 5px;
     font-size: 25px;
     padding: 20px;
+}
+
+input {
+    font-family: Categorie;
+    width: 250px;
+    height: 25px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1.5px #434a52 solid;
+}
+
+input::placeholder {
+    color: black;
+    font-size: 15px;
+}
+
+input.envoyer[type="submit"]:hover {
+    background: #2c3338;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+.envoyer {
+    background: #efefef;
+    transition-duration: 0.5s;
+}
+
+.content-area {
+    height: 1800px;
 }

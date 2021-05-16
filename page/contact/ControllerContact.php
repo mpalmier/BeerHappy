@@ -19,7 +19,7 @@ class ControllerContact
                 header('Location:index.php?page=contactLaunch&msg='.$_POST['message'].'&titre='.$_POST['titre'].'');
             }
             else {
-                echo('Vous n\'avez pas remplit toute les cases ');
+                header('Location: index.php?page=contact&r=1');
             }
         }
     }

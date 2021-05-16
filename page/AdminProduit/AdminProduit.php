@@ -28,7 +28,7 @@
                     <p>Prix du produit : <input type="text" name="prix" /></p>
                     <p>Stock : <input type="text" name="stock" /></p>
                     <p> Catégorie : <select name="menu_destination"><?php ControllerAdminProduit::afficherCategorie(); ?> </p></select>
-                    <p><input type="submit" name="submit" value="Ajouter un produit"></p>
+                    <p><input class="envoyer" type="submit" name="submit" value="Ajouter un produit"></p>
                 </form>
             </div>
 

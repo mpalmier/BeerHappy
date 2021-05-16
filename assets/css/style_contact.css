@@ -8,7 +8,7 @@
     padding: 20px;
 }
 
-.form_contact h2 {
+.form_contact p {
     font-family: Categorie;
     font-size: 45px;
 }
@@ -28,6 +28,8 @@ form textarea {
     height: 350px;
     max-height: 555px;
     max-width: 1520px;
+    min-height: 100px;
+    min-width: 560px;
 }
 
 #launch {
@@ -37,4 +39,25 @@ form textarea {
 
 .content-area {
     height: 1450px;
+}
+
+input::placeholder, textarea::placeholder {
+    text-align: center;
+    font-family: Categorie;
+}
+
+.launch input {
+    background: whitesmoke;
+    color: black;
+    transition-duration: 0.5s;
+    border: 1px #393c45 solid;
+    padding: 10px;
+    font-family: Categorie;
+}
+
+.launch input[type="submit"]:hover {
+    background: #2c3338;
+    color: white;
+    transition-duration: 0.5s;
+    border: 1px #393c45 solid;
 }

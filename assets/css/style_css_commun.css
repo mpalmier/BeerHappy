@@ -80,4 +80,10 @@
     transition-duration: 0.5s;
 }
 
-
+.error {
+    margin-top: 15px;
+    border: 2px solid #393c45;
+    border-radius: 10px;
+    background: #35404c;
+    color: #e42222;
+}

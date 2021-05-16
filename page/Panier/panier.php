@@ -34,7 +34,7 @@
 
     ?>
 
-    <div class="retour"><a href="<?php $_SERVER["HTTP_REFERER"] ?>">Retour</a></div>
+    <div class="retour"><a href="javascript:history.go(-1)">Retour</a></div>
     </div>
 
 </body></html>
