@@ -107,7 +107,7 @@
 
 table {
     margin-top: 50px;
-    border: medium solid #6495ed;
+    border: medium solid #2c3338;
     border-collapse: collapse;
     font-size: 25px;
     padding: 50px;
@@ -115,8 +115,8 @@ table {
 
 th {
     font-family: monospace;
-    border: thin solid #6495ed;
-    background-color: #D0E3FA;
+    border: thin solid #000000;
+    background-color: #dbefff;
     padding-right: 120px;
     padding-left: 120px;
 }
@@ -144,3 +144,130 @@ td {
 .img img {
     width: 180px;
 }
+
+.add {
+    margin-top: 35px;
+}
+
+.add a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    background: #262c37;
+    letter-spacing: 2px;
+    font-size: 16px;
+    transition: 0.5s;
+    font-family: Categorie;
+}
+
+.add a:hover {
+    color: rgba(255,255,255,1);
+}
+
+.add a span {
+    display: block;
+    position: absolute;
+    background: #2894ff;
+}
+
+.add a span:nth-child(1) {
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+
+.add a:hover span:nth-child(1) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+
+.add a span:nth-child(2) {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.add a:hover span:nth-child(2) {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.add a span:nth-child(3) {
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+
+.add a:hover span:nth-child(3) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+
+.add a span:nth-child(4) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+
+.add a:hover span:nth-child(4) {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+
+.borderFoot a:active, .borderFoot a:visited, .borderFoot a:link {
+    margin-top: 15px;
+    text-decoration: none;
+    color: black;
+    font-family: Categorie;
+    transition-duration: 0.5s;
+}
+
+.borderFoot a:hover {
+    font-family: Categorie;
+    color: darkgray;
+    transition-duration: 0.5s;
+}
+
+.qte p {
+    display: flex;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.qte img{
+    margin-top: 5px;
+}
+
+.qte {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

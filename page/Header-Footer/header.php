@@ -11,7 +11,7 @@
     <header>
         <div class="wrapper">
             <div class="logo">
-                <a href="#">Prestachope</a>
+                <a href="index.php?page=accueil">Prestachope</a>
             </div>
             <nav>
                 <a href="index.php?page=accueil">Accueil</a>
@@ -39,6 +39,14 @@
                     if (isset($_SESSION['id']))
                     {
                         echo "<a href='index.php?page=deconnexion'>Déconnexion</a>";
+                    }
+                }
+
+                if (isset($_SESSION['id']))
+                {
+                    if (isset($_SESSION['id']))
+                    {
+                        echo "<a id='nbr' href='index.php?page=profile'><img src='assets/images/profil.svg'></img></a>";
                     }
                 }
 

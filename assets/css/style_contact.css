@@ -1,0 +1,40 @@
+.form_contact {
+    background: rgba(255,255,255,0.8);
+    margin-top: 75px;
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: -60px;
+    padding: 20px;
+}
+
+.form_contact h2 {
+    font-family: Categorie;
+    font-size: 45px;
+}
+
+form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form textarea {
+    margin-top: 25px;
+    font-size: 30px;
+}
+
+form textarea {
+    height: 350px;
+    max-height: 555px;
+    max-width: 1520px;
+}
+
+#launch {
+    margin-left: auto;
+    width: 200px;
+}
+
+.content-area {
+    height: 1450px;
+}

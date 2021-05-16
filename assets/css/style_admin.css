@@ -36,7 +36,6 @@
 }
 
 table {
-    margin-top: 50px;
     border: medium solid #6495ed;
     border-collapse: collapse;
     font-size: 20px;
@@ -199,6 +198,80 @@ input#addButton[type="submit"]:hover {
     font-size: 25px;
     margin-bottom: -60px;
 }
+
+.block_contact {
+    background: rgba(255,255,255,0.8);
+    margin-top: 15px;
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.block_contact .titre {
+    font-size: 25px;
+    font-family: Categorie;
+    text-align: left;
+}
+
+.block_contact .contenu {
+    font-family: Categorie;
+    padding-top: 50px;
+}
+
+.block_contact .user {
+    font-size: 25px;
+    font-family: Categorie;
+    margin-left: auto;
+    text-align: right;
+    padding-top: 60px;
+}
+
+.contact p{
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 35px;
+    margin-bottom: 25px;
+    font-family: Categorie;
+}
+
+.input_modif {
+    font-family: Categorie;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px black solid;
+    background: #efefef;
+    transition-duration: 0.5s;
+}
+
+input.input_modif[type="submit"]:hover {
+    background: #2c3338;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+.mail a:active, .mail a:visited, .mail a:link {
+    margin-top: 15px;
+    text-decoration: none;
+    color: #0072ff;
+    font-family: Categorie;
+    transition-duration: 0.5s;
+}
+
+.mail a:hover {
+    font-family: Categorie;
+    color: #80a7ab;
+    transition-duration: 0.5s;
+}
+
+.mail {
+    text-align: right;
+}
+
 
 
 

@@ -31,12 +31,6 @@
     justify-content: center;
 }
 
-.categorie {
-    padding-top: 45px;
-    font-size: 45px;
-    font-family: "Categorie";
-    text-decoration: underline;
-}
 
 @font-face {
     font-family: "Product";
@@ -48,9 +42,42 @@
     src: url("../fonts/ATypewriterForMe.ttf");
 }
 
-.pages {
-    font-size: 100px;
+.noUse {
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px black solid;
+    width: 50px;
+    background: #e6e6e6;
 }
 
+.use {
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px black solid;
+    width: 50px;
+    background: #2c3338;
+    color: antiquewhite;
+}
+
+.pages a:active, .pages a:visited, .pages a:link, .pagess a:active,.pagess a:visited,.pagess a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.retour a:active, .retour a:visited, .retour a:link {
+    margin-top: 15px;
+    text-decoration: none;
+    color: black;
+    font-family: Categorie;
+    transition-duration: 0.5s;
+}
+
+.retour a:hover {
+    font-family: Categorie;
+    color: darkgray;
+    transition-duration: 0.5s;
+}
 
 

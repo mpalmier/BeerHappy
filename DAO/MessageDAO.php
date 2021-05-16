@@ -1,9 +1,11 @@
 <?php
 class MessageDAO{
-    public static function getMessage(){
+
+
+    public static function getMessageById($id){
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from message");
-        $reponse->execute();
+        $reponse = $bdd->prepare("SELECT * from message where id=?");
+        $reponse->execute(array($id));
         $message = $reponse->fetchAll();
         $tab=Array();
 
@@ -11,54 +13,45 @@ class MessageDAO{
             return null;
         }
         else{
-            foreach ($message as $mes) {
-                $messageDTO = new MessageDTO();
-                $messageDTO->setId($mes[0]);
-                $messageDTO->setEmail($mes[1]);
-                $messageDTO->setTitre($mes[2]);
-                $messageDTO->setContenu($mes[3]);
-                $messageDTO->setDate($mes[4]);
-                $tab[]=$messageDTO;
-            }
-
+            $mess=$message[0];
+            $messageDTO = new MessageDTO();
+            $messageDTO->setId($mess[0]);
+            $messageDTO->setTitre($mess[1]);
+            $messageDTO->setContenu($mess[2]);
+            $messageDTO->setDate($mess[3]);
+            $messageDTO->setIdUser($mess[4]);
+            $tab[]=$messageDTO;
             return $tab;
         }
     }
 
-    public static function getMessageById($id){
+    public static function setMessageContact($msg,$titre) {
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from user where id_message=?");
-        $reponse->execute(array($id));
-        $message = $reponse->fetchAll();
-        if (empty($user[0])){
-            return null;
-        }
-        else{
-            $mess=$message[0];
-            $messageDTO = new MessageDTO();
-            $messageDTO->setIdUser($mess[0]);
-            $messageDTO->setPseudo($mess[1]);
-            $messageDTO->setContent($mess[2]);
-            $messageDTO->setDate($mess[3]);
-            return $messageDTO;
-        }
+        $reponse = $bdd->prepare("INSERT INTO message (id, titre, contenu, date, id_user) VALUES (NULL, ?, ?, CURRENT_TIMESTAMP(), ?);");
+        $reponse->execute(array($titre,$msg,$_SESSION['id']));
     }
-    public static function getMessageByPseudo($pseudo){
+
+    public static function getNbrElementAdminContact()
+    {
+        // Récupérer le nombre d'enregistrements
         $bdd = DatabaseLinker::getConnexion();
-        $reponse = $bdd->prepare("SELECT * from user where pseudo=?");
-        $reponse->execute(array($pseudo));
-        $message = $reponse->fetchAll();
-        if (empty($user[0])){
-            return null;
-        }
-        else{
-            $mess=$message[0];
-            $messageDTO = new MessageDTO();
-            $messageDTO->setIdUser($mess[0]);
-            $messageDTO->setPseudo($mess[1]);
-            $messageDTO->setContent($mess[2]);
-            $messageDTO->setDate($mess[3]);
-            return $messageDTO;
+        $count = $bdd->prepare('SELECT COUNT(id) AS cpt from message');
+        $count->setFetchMode(PDO::FETCH_ASSOC);
+        $count->execute();
+        $tcount=$count->fetchAll();
+        return $tcount;
+    }
+
+    public static function getElementByPageAdminContact($debut,$nbr_elements_par_page) {
+        //Récupérer les enregistrements eux-mêmes
+        $bdd = DatabaseLinker::getConnexion();
+        $sel=$bdd->query('SELECT id FROM message ORDER BY id LIMIT '.$debut.','.$nbr_elements_par_page);
+        $sel->setFetchMode(PDO::FETCH_ASSOC);
+        $tab=$sel->fetchAll();
+        foreach ($tab as $t)
+        {
+            $id =  $t['id'];
+            ControllerAdminContact::insertCommentaireById($id);
         }
     }
 

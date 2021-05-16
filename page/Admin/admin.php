@@ -53,10 +53,10 @@
             {
                 if($pages != $i)
                 {
-                    echo "<a href='?pages=$i&page=".$_GET['page']."'>$i</a>";
+                    echo "<a class='noUse' href='?pages=$i&page=".$_GET['page']."'>$i</a>";
                 }
                 else {
-                    echo "<a>$i</a>";
+                    echo "<a class='use'>$i</a>";
                 }
             }
             echo '</div>';
@@ -90,10 +90,10 @@
                 {
                     if($pages != $i)
                     {
-                        echo "<a href='?pages=$i&page=".$_GET['page']."'>$i</a>";
+                        echo "<a class='noUse' href='?pages=$i&page=".$_GET['page']."'>$i</a>";
                     }
                     else {
-                        echo "<a>$i</a>";
+                        echo "<a class='use'>$i</a>";
                     }
                 }
                 echo '</div>';

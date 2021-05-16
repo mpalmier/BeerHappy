@@ -259,23 +259,11 @@ class SuperController
 
             case "ModifierMdp":
                 include_once('page/profile/ControllerProfile.php');
-                if (isset($_POST['password1']) && isset($_GET['password2'])) {
-                    if ($_POST['password1'] == $_POST['password2']){
-                        UserDAO::UpdateMdpById($_POST['password1'], $_GET['id']);
-                    }
-                    else{
-                        //ControllerProfile::redirectUser();
-                        echo 'Les deux mots de passes ne sont pas identiques';
-                    }
+                if (isset($_POST['password1']) && isset($_POST['password2']) && isset($_POST['password3'])) {
+                    ControllerProfile::getVerifMdp(sha1($_POST['password1']),sha1($_POST['password2']),sha1($_POST['password3']));
                 }
-                else{
-                    //ControllerProfile::redirectUser();
-                    echo 'Un champs est vide'.'<br>';
-                    echo'champ 1'. $_POST['password1'].'<br>';
-                    echo'champ 2'. $_POST['password2'].'<br>';
-                }
-                //ControllerProfile::redirectUser();
-                //echo 'Votre mot de passe à bien été changé';
+
+                ControllerProfile::redirectUser();
                 break;
 
             case "ModifierVille":
@@ -285,6 +273,7 @@ class SuperController
                 }
                 ControllerProfile::redirectUser();
                 break;
+
 
             case "ModifierAdresse":
                 include_once('page/profile/ControllerProfile.php');
@@ -318,16 +307,19 @@ class SuperController
                 ControllerProfile::redirectUser();
                 break;
 
-
             case "contact" :
-                include_once('page/contact/ControllerContact.php.php');
-                include_once("page/contact/Contact.php");
+                include_once('page/contact/ControllerContact.php');
                 $instanceController = new ControllerContact();
                 $instanceController::insertView();
                 break;
 
-
-
+            case "contactLaunch":
+                include_once('page/contact/ControllerContact.php');
+                if (isset($_GET['msg']) || isset($_GET['titre'])) {
+                    ControllerContact::getFormLaunchContact();
+                    echo 'test';
+                }
+                break;
         }
 
         if (isset($_GET['page']))

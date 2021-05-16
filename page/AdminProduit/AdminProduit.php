@@ -49,19 +49,23 @@
             $nbr_de_pages = ceil($nbr/$nbr_elements_par_page);
             $debut=($pages-1)*$nbr_elements_par_page;
 
+
+
             //Parcourir les différentes pages
             echo '<div class="pages">';
             for($i=1;$i<=$nbr_de_pages;$i++)
             {
                 if($pages != $i)
                 {
-                    echo "<a href='?pages=$i&page=".$_GET['page']."'>$i</a>";
+                    echo "<a class='noUse' href='?pages=$i&page=".$_GET['page']."'>$i</a>";
                 }
                 else {
-                    echo "<a>$i</a>";
+                    echo "<a class='use'>$i</a>";
                 }
             }
             echo '</div>';
+
+
 
             ?>
         </div>
@@ -73,6 +77,7 @@
                 <th><span class="image">Image</span></th>
                 <th><span class="prix">Prix</span></th>
                 <th><span class="stock">Stock</span></th>
+                <th><span class="modif">Modifier</span></th>
                 <th><span class="action">Action</span></th>
             </tr>
 
@@ -84,16 +89,17 @@
     </table>
 
         <?php
+
         //Parcourir les différentes pages
         echo '<div class="pages">';
         for($i=1;$i<=$nbr_de_pages;$i++)
         {
             if($pages != $i)
             {
-                echo "<a href='?pages=$i&page=".$_GET['page']."'>$i</a>";
+                echo "<a class='noUse' href='?pages=$i&page=".$_GET['page']."'>$i</a>";
             }
             else {
-                echo "<a>$i</a>";
+                echo "<a class='use'>$i</a>";
             }
         }
         echo '</div>';

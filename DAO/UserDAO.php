@@ -120,10 +120,10 @@ class UserDAO
 
     }
 
-    public static function UpdateMdpById($mdp,$id){
+    public static function UpdateMdpById($id,$mdp){
         $bdd = DatabaseLinker::getConnexion();
         $reponse = $bdd->prepare("UPDATE user SET password=? where id=?");
-        $reponse->execute(array(sha1($mdp),$id));
+        $reponse->execute(array($mdp,$id));
 
     }
 

@@ -72,8 +72,9 @@ include_once('DTO/UserDTO.php');
             echo "<td>Nom du produit : " . $produits->getNom() . "<form method=post action='index.php?page=ModifierProduit&id=" . $produits->getId() . "' enctype='multipart/form-data' > <input type='text' name='nom'></td>";
             echo "<td>Image du produit : </p><input type='file' name='upload_file'></td>";
             echo "<td>Prix du produit : " . $produits->getPrix() . "<input type='text' name='prix'></td>";
-            echo "<td>Stock restant : " . $produits->getStock() . "<input type='text' name='stock'> <input type='submit' name='submit' value='Modifier'></form></td>";
-            echo "<td><a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'>Supprimer</a></td>" ;
+            echo "<td>Stock restant : " . $produits->getStock() . "<input type='text' name='stock'></td>";
+            echo "<td><input class='input_modif' type='submit' name='submit' value='Modifier'></form></td>";
+            echo "<td><a href='index.php?page=supprimerProduit&id=" . $produits->getId() . "'><img src='assets/images/poubelle-de-recyclage.svg'></a></td>" ;
             echo "</tr>";
         }
     }

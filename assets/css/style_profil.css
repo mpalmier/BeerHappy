@@ -1,0 +1,27 @@
+.block_profil {
+    background: rgba(255,255,255,0.8);
+    margin-top: 75px;
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: -60px;
+    padding: 20px;
+}
+
+.block_profiluser {
+    background: rgba(255,255,255,0.8);
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.block_profiladresse {
+    background: rgba(255,255,255,0.8);
+    margin: 20px;
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 20px;
+}

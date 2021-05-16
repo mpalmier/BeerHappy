@@ -25,16 +25,17 @@
 
             ?>
 
-
-
-    <a href="<?php $_SERVER["HTTP_REFERER"] ?>">Retour</a>
+    <div>
 
     <?php
-
-    echo '<a href="index.php?page=commande">Commander</a>';
+    if(!empty($_SESSION['panier'])) {
+        echo '<div class="add"><a href="index.php?page=commande"><span></span><span></span><span></span><span></span>Commander</a></div>';
+    }
 
     ?>
 
+    <div class="retour"><a href="<?php $_SERVER["HTTP_REFERER"] ?>">Retour</a></div>
+    </div>
 
 </body></html>
 

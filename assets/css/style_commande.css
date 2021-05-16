@@ -1,60 +1,12 @@
-.block_details {
+
+.block_commande {
     background: rgba(255,255,255,0.8);
     margin-top: 75px;
     border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     margin-bottom: -60px;
-    display: flex;
-    flex-direction: row;
-    padding: 80px;
-}
-
-.photo img {
-    width: 500px;
-    border: 2px gray solid;
-    border-radius: 5px;
-}
-
-.description {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-}
-
-.nom {
-    font-size: 40px;
-}
-
-.prix {
-    font-size: 20px;
-    margin-top: 25px;
-    margin-right: 120px;
-    color: #2c3338;
-}
-
-.stock {
-    font-size: 20px;
-    margin-top: 25px;
-    margin-left: 43px;
-    color: #2c3338;
-}
-
-
-.add {
-    font-size: 20px;
-    margin-top: 45px;
-    padding-left: 123px;
-    color: #2c3338;
-}
-
-.retour {
-    font-size: 20px;
-    margin-top: auto;
-    margin-bottom: 20px;
-    margin-left: 43px;
-    margin-left: auto;
-    color: #2c3338;
+    padding: 20px;
 }
 
 .add a {
@@ -149,6 +101,3 @@
     transition-delay: 0.5s;
 }
 
-.content-area {
-    height: 1400px;
-}

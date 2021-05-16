@@ -20,8 +20,18 @@ class ControllerDetails
             <div class="nom"><p>'.$ptd->getNom().'</p></div>
             <div class="prix"><p>'.$ptd->getPrix().' €</p></div>
             <div class="stock"><p>Stock disponible : '; if ($ptd->getStock() >= 0) { echo $ptd->getStock(); } else { echo 'En cours d\'approvisionnement'; } echo'</p></div>
-            <div class="add"><a href="index.php?page=launchPanier&id='.$_GET['id'].'"><span></span><span></span><span></span><span></span>Ajouter au panier</a></div>
-            <div class="retour"><a href="'.$_SERVER["HTTP_REFERER"].'">Retour</a></div></div>';
+            ';
+
+            if (isset($_SESSION['id'])) {
+                echo '<div class="add"><a href="index.php?page=launchPanier&id='.$_GET['id'].'"><span></span><span></span><span></span><span></span>Ajouter au panier</a></div>';
+            }
+
+            else {
+                echo '<div class="add"><a href="index.php?page=connexion"><span></span><span></span><span></span><span></span>Connectez-vous pour ajouter au panier</a></div>';
+            }
+
+
+            echo '<div class="retour"><a href="'.$_SERVER["HTTP_REFERER"].'">Retour</a></div></div>';
 
         }
 

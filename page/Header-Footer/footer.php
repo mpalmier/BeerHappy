@@ -10,12 +10,18 @@
         <div class="footer">
             <ol>
                 <li id="titre1">Nos services</li>
-                <li class="listeTextLien"><a href="">Accueil</a></li>
-                <li class="listeTextLien"><a href="">Bières</a></li>
-                <li class="listeTextLien"><a href="">Charcuterie</a></li>
-                <li class="listeTextLien"><a href="">Fromage</a></li>
-                <li class="listeTextLien"><a href="">Autre</a></li>
-                <li class="listeTextLien"><a href="">Contactez-nous ?</a></li>
+                <li class="listeTextLien"><a href="index.php?page=accueil">Accueil</a></li>
+                <?php
+
+                $categorie = CategorieDAO::getCategorie();
+
+                foreach ($categorie as $cat) {
+                    echo '<li class="listeTextLien"><a href="index.php?page=produit&id='.$cat->getId().'">'.$cat->getNom().'</a></li>';
+                }
+
+                ?>
+
+                <li class="listeTextLien"><a href="index.php?page=contact">Contactez-nous</a></li>
 
             </ol>
             <ol><span class="vertical"></ol>
@@ -34,7 +40,7 @@
                 <li id="titre3">Info Contact</li>
                 <li class="listeTextAdresse">Adresse : 2 Rue Boirot, 63000 Clermont-Ferrand</li>
                 <li class="listeText">Tel : 04 54 21 58 60</li>
-                <li class="listeTextAdresseMail">Email : <a href="">prestachope@gmail.com</a></li>
+                <li class="listeTextAdresseMail">Email : <a href="mailto:prestachope@gmail.com">prestachope@gmail.com</a></li>
             </ol>
         </div>
         <div class="underFotter">

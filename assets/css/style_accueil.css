@@ -1,0 +1,46 @@
+.block_one, .block_three {
+    background: rgba(0,0,0,0.8);
+    margin-top: 75px;
+    border: 2px #606468 solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: -60px;
+    padding: 20px;
+    color: white;
+}
+
+.block_two {
+    background: rgba(255,255,255,0.8);
+    margin-top: 75px;
+    border: 2px #606468 solid;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: -60px;
+    padding: 20px;
+    color: black;
+}
+
+.block_one p {
+    font-family: Categorie;
+}
+
+.block_two p {
+    font-family: Categorie;
+}
+
+.img1, .img2 {
+    border-radius: 5px;
+    border: 1px whitesmoke solid;
+}
+
+.img1 {
+    width: 540px;
+}
+
+.img2 {
+    width: 1088px;
+}
+
+.content-area {
+    height: 2100px;
+}

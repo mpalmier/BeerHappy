@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style_carte.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style_css_commun.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_carte.css">
 </head>
 <body>
     <div class="content-area">

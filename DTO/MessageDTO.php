@@ -6,24 +6,8 @@ class MessageDTO
     private $id;
     private $titre;
     private $contenu;
-    private $email;
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
     private $date;
+    private $id_user;
 
     /**
      * @return mixed
@@ -88,5 +72,23 @@ class MessageDTO
     {
         $this->date = $date;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * @param mixed $id_user
+     */
+    public function setIdUser($id_user): void
+    {
+        $this->id_user = $id_user;
+    }
+
+
     
 }

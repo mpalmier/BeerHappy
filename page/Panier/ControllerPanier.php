@@ -132,8 +132,8 @@ class ControllerPanier
                             <td><div class="img"><img src="' . $pt->getPhoto() . '"></div></td>
                             <td>' . $pt->getNom() . '</td>
                             <td>' . $pt->getPrix() . ' €</td>
-                            <td><a href="index.php?page=suprQuantite&id=' . $key . '&idp=' . $pt->getId() . '">-</a>' . $value[1] . '<a href="index.php?page=addQuantite&id=' . $key . '&idp=' . $pt->getId() . '">+</a></td>
-                            <td><a href="index.php?page=supprimerPanier&id=' . $key . '">Supprimer</a></td>
+                            <td><div class="qte"><a href="index.php?page=suprQuantite&id=' . $key . '&idp=' . $pt->getId() . '"><img src="assets/images/moins.svg"></a><p>' . $value[1] . '</p><a href="index.php?page=addQuantite&id=' . $key . '&idp=' . $pt->getId() . '"><img src="assets/images/plus.svg"></a></div></td>
+                            <td><a href="index.php?page=supprimerPanier&id=' . $key . '"><img class="id1" src="assets/images/poubelle-de-recyclage.svg"></a></td>
                         </tr>';
                         $prix1 += ControllerPanier::getCalculPrixQte($pt->getPrix(), $value[1]);
                     }
@@ -145,7 +145,7 @@ class ControllerPanier
 
             echo "</div>
             <tfoot>
-            <td class='borderFoot'><a href='index.php?page=supprimerPanierAll'>Supprimer tout le panier</a></td>
+            <td class='borderFoot'><a href='index.php?page=supprimerPanierAll'>Supprimer le panier</a></td>
             <td class='borderFoot'></td>
             <td class='borderFoot'></td>
             <td class='borderFoot'></td>

@@ -29,11 +29,34 @@ class ControllerProduit
                                 <div class="stats-container">
                                     <span class="product_price">'.$pt->getPrix().' €</span>
                                     <span class="product_name">'.$pt->getNom().'</span>
-                                    <p>A remplir</p>
+                                    <p>__________________________________</p>
                                     <div class="product-options">
-                                        <div class="button_cont" align="center">'?><?php if ($pt->getStock() >= 0) {?>
-                                            <a class="buttonAddProduct" href="index.php?page=launchPanier&id='.$pt->getId().'">Ajouter au panier</a>
-                                            <?php } else { echo '<a class="buttonAddProductNon">Produit en rupture de Stock</a>'; } echo '
+                                        <div class="button_cont" align="center">'?>
+
+                                        <?php
+                                         if (isset($_SESSION['id'])) {
+
+                                             if ($pt->getStock() >= 0) {
+
+                                        ?>
+
+                                            <a class="buttonAddProduct" href="index.php?page=launchPanier&id=<?php echo $pt->getId(); ?>">Ajouter au panier</a>
+
+                                        <?php
+                                                }
+
+                                                else {
+                                                    echo '<a class="buttonAddProductNon">Produit en rupture de Stock</a>';
+                                                }
+
+                                            }
+
+                                        else
+                                        {
+                                            echo '<a class="buttonAddProductNon">Connectez-vous pour ajouter au panier</a>';
+                                        }
+
+                                        echo '
                                         </div>
                                     </div>
                                 </div>

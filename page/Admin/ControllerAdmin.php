@@ -24,9 +24,6 @@ class ControllerAdmin{
                 return false;
             }
 
-
-
-
         }
     }
     public static function insertView(){
@@ -63,7 +60,7 @@ class ControllerAdmin{
                 echo '<td class="noBorderAdminUser">enregistré</td>';
                 echo '<td class="noBorderAdminUser"></td>';
             }
-            echo '<td><a href="index.php?page=deleteAdmin&id='.$user->getId().'">Supprimer</a></td></tr>';
+            echo '<td><a href="index.php?page=deleteAdmin&id='.$user->getId().'"><img class="id1" src="assets/images/poubelle-de-recyclage.svg"></a></td></tr>';
 
         }
     }
